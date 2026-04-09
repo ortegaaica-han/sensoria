@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Future & Ethics — sensoria</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/shared.css" />
+    <link rel="stylesheet" href="../css/ethics.css" />
+    <style>
+      /* ── Section Index unique styles ── */
+      .section-hero {
+        background: linear-gradient(
+          135deg,
+          var(--haunted) 0%,
+          var(--dark-bg) 100%
+        );
+        padding: 80px 0 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      .section-hero::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(191, 141, 242, 0.15) 0%,
+          transparent 70%
+        );
+      }
+      .section-hero .hero-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 20px;
+        background: rgba(191, 141, 242, 0.18);
+        border: 1.5px solid var(--vodka);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: var(--vodka);
+        margin-bottom: 1.4rem;
+      }
+      .section-hero h1 {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        color: var(--silver);
+        line-height: 1.15;
+      }
+      .section-hero .hero-desc {
+        color: rgba(221, 220, 242, 0.68);
+        font-size: 0.97rem;
+        line-height: 1.78;
+        max-width: 640px;
+        margin-top: 1rem;
+      }
+      .section-hero .hero-stats {
+        display: flex;
+        gap: 2rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+      .hero-stat-num {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 2rem;
+        color: var(--vodka);
+        line-height: 1;
+      }
+      .hero-stat-label {
+        font-size: 0.72rem;
+        color: rgba(221, 220, 242, 0.45);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-top: 0.2rem;
+      }
+
+      /* sub-topics strip */
+      .subtopics-strip {
+        padding: 28px 0;
+        background: #fff;
+        border-bottom: 1px solid var(--silver);
+      }
+      .stopic-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: var(--mag-grey);
+        border: 1.5px solid var(--silver);
+        border-radius: 50px;
+        padding: 0.45rem 1.1rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--haunted);
+        transition: all 0.2s;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+      .stopic-chip:hover,
+      .stopic-chip.active {
+        background: var(--haunted);
+        color: var(--silver);
+        border-color: var(--haunted);
+      }
+
+      /* article list cards */
+      #articles-list {
+        padding: 80px 0;
+        background: var(--mag-grey);
+      }
+      .art-list-card {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border-radius: 16px;
+        border: 1.5px solid var(--silver);
+        overflow: hidden;
+        height: 100%;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        color: inherit;
+      }
+      .art-list-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 44px rgba(53, 47, 89, 0.12);
+      }
+      .alc-img {
+        aspect-ratio: 16/9;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .alc-img.c1 {
+        background: linear-gradient(135deg, #c5c0e0, #6b629a);
+      }
+      .alc-img.c2 {
+        background: linear-gradient(135deg, #b8d4c8, #5a8a72);
+      }
+      .alc-img.c3 {
+        background: linear-gradient(135deg, #d4c8e0, #8a6aaa);
+      }
+      .alc-img.c4 {
+        background: linear-gradient(135deg, #c8d8e8, #5a7890);
+      }
+      .alc-img.c5 {
+        background: linear-gradient(135deg, #e0d4c0, #9a7850);
+      }
+      .alc-img.c6 {
+        background: linear-gradient(135deg, #d8c8d8, #8a5a8a);
+      }
+      .alc-chip {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        background: rgba(53, 47, 89, 0.82);
+        backdrop-filter: blur(4px);
+        color: var(--silver);
+        font-size: 0.63rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border-radius: 50px;
+        padding: 0.18rem 0.7rem;
+      }
+      .alc-body {
+        padding: 1.3rem;
+        flex: 1;
+      }
+      .alc-body h5 {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: var(--haunted);
+        line-height: 1.4;
+        margin-bottom: 0.4rem;
+      }
+      .alc-body p {
+        font-size: 0.83rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .alc-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.85rem 1.3rem;
+        border-top: 1px solid var(--silver);
+        font-size: 0.74rem;
+        color: var(--grape);
+      }
+      .read-more-s {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        color: var(--haunted);
+        font-size: 0.78rem;
+        font-weight: 600;
+        transition: gap 0.2s;
+      }
+    </style>
+
+    <style id="shared-nav-override">
+      /* ── SHARED NAV + FOOTER OVERRIDE ── */
+      :root {
+        --mag-grey: #f0f0f2;
+        --haunted: #352f59;
+        --grape: #9e99bf;
+        --vodka: #bf8df2;
+        --silver: #dddcf2;
+        --dark-bg: #2b2640;
+        --body-text: #2d3436;
+        --muted: #5a5470;
+      }
+      /* ── NAVBAR ── */
+      .navbar {
+        background: var(--haunted);
+        border-bottom: 2px solid var(--grape);
+        position: sticky;
+        top: 0;
+        z-index: 1050;
+        padding: 0.65rem 0;
+      }
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-mark {
+        width: 36px;
+        height: 36px;
+        background: var(--silver);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        font-style: italic;
+        color: var(--haunted);
+        flex-shrink: 0;
+      }
+      .logo-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        font-style: italic;
+        color: var(--silver);
+        letter-spacing: 0.04em;
+      }
+      .navbar-nav .nav-link {
+        color: var(--silver) !important;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 0.4rem 0.9rem;
+        border-radius: 6px;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .navbar-nav .nav-link:hover {
+        color: var(--vodka) !important;
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .navbar-nav .nav-link.active {
+        color: var(--vodka) !important;
+        background: rgba(191, 141, 242, 0.12);
+      }
+      .nav-search-wrap {
+        position: relative;
+      }
+      .nav-search {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--grape);
+        border-radius: 50px;
+        padding: 0.35rem 1rem 0.35rem 2rem;
+        color: var(--silver);
+        font-size: 0.78rem;
+        outline: none;
+        width: 160px;
+        transition:
+          width 0.3s,
+          background 0.2s;
+      }
+      .nav-search::placeholder {
+        color: var(--grape);
+      }
+      .nav-search:focus {
+        width: 200px;
+        background: rgba(255, 255, 255, 0.13);
+      }
+      .nav-search-wrap .srch-icon {
+        position: absolute;
+        left: 0.7rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--grape);
+        font-size: 0.76rem;
+        pointer-events: none;
+      }
+      .navbar-toggler {
+        border: none;
+      }
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
+      /* ── FAT FOOTER ── */
+      footer {
+        background: var(--dark-bg) !important;
+        color: var(--silver) !important;
+        padding: 72px 0 0 !important;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 2rem;
+        color: var(--silver);
+        letter-spacing: 0.02em;
+        margin-bottom: 0.75rem;
+      }
+      .footer-tagline {
+        font-size: 0.83rem;
+        color: rgba(221, 220, 242, 0.5);
+        line-height: 1.7;
+        max-width: 260px;
+      }
+      .footer-social {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+      .soc-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(221, 220, 242, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--silver);
+        font-size: 0.9rem;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .soc-btn:hover {
+        background: var(--vodka);
+        border-color: var(--vodka);
+        color: var(--haunted);
+      }
+      .footer-heading {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--vodka);
+        margin-bottom: 0.75rem;
+      }
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .footer-links li {
+        margin-bottom: 0.45rem;
+      }
+      .footer-links a {
+        font-size: 0.82rem;
+        color: rgba(221, 220, 242, 0.6);
+        transition: color 0.18s;
+      }
+      .footer-links a:hover {
+        color: var(--silver);
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: rgba(221, 220, 242, 0.55);
+        margin-bottom: 0.4rem;
+      }
+      .footer-contact-item i {
+        color: var(--grape);
+        font-size: 0.85rem;
+      }
+      .footer-contact-item a {
+        color: rgba(221, 220, 242, 0.55);
+      }
+      .footer-contact-item a:hover {
+        color: var(--silver);
+      }
+      .footer-bottom {
+        padding: 1.2rem 0;
+        border-top: 1px solid rgba(221, 220, 242, 0.1);
+        font-size: 0.75rem;
+        color: rgba(221, 220, 242, 0.35);
+        margin-top: 3rem;
+      }
+      .footer-bottom a {
+        color: rgba(221, 220, 242, 0.35);
+        transition: color 0.18s;
+      }
+      .footer-bottom a:hover {
+        color: var(--silver);
+      }
+      /* ── breadcrumb ── */
+      .breadcrumb-bar {
+        background: #fff;
+        border-bottom: 1px solid var(--silver);
+        padding: 0.55rem 0;
+      }
+      .breadcrumb {
+        margin: 0;
+        font-size: 0.78rem;
+      }
+      .breadcrumb-item a {
+        color: var(--grape);
+      }
+      .breadcrumb-item.active {
+        color: var(--haunted);
+        font-weight: 600;
+      }
+      .breadcrumb-item + .breadcrumb-item::before {
+        color: var(--grape);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <div class="logo-mark">S</div>
+          <span class="logo-text">sensoria</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav mx-auto gap-lg-1">
+            <li class="nav-item">
+              <a class="nav-link" href="cluster.html">The Cluster</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="feedback.html">Feedback</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="casestudies.html">Case Studies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="engineering.html">Engineering</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="ethics.html">Ethics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+          <div class="nav-search-wrap mt-3 mt-lg-0">
+            <i class="bi bi-search srch-icon"></i>
+            <input
+              class="nav-search"
+              type="text"
+              placeholder="Search topics…"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item active">Future & Ethics</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Section Hero -->
+    <header class="section-hero">
+      <div class="container">
+        <div class="hero-icon"><i class="bi bi-shield-check"></i></div>
+        <div class="sec-eyebrow" style="color: rgba(221, 220, 242, 0.5)">
+          Long-Term Implications
+        </div>
+        <h1>Future &amp; Ethics</h1>
+        <p class="hero-desc">
+          AI-powered wearables promise to transform health monitoring and human
+          performance — but they also raise urgent questions about data privacy,
+          neural sovereignty, and the right to bodily autonomy in a
+          sensor-saturated world.
+        </p>
+        <div class="hero-stats">
+          <div>
+            <div class="hero-stat-num">6</div>
+            <div class="hero-stat-label">Articles</div>
+          </div>
+          <div>
+            <div class="hero-stat-num">3</div>
+            <div class="hero-stat-label">Sub-topics</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub-topic filter chips -->
+    <div class="subtopics-strip">
+      <div class="container">
+        <div class="d-flex gap-2 flex-wrap">
+          <span
+            class="stopic-chip active"
+            onclick="filterCards(this)"
+            data-tag="all"
+            >All Topics</span
+          >
+          <span
+            class="stopic-chip"
+            onclick="filterCards(this)"
+            data-tag="Neural Interfaces"
+            >Neural Interfaces</span
+          >
+          <span
+            class="stopic-chip"
+            onclick="filterCards(this)"
+            data-tag="Neural Interfaces"
+            >Neural Interfaces</span
+          >
+          <span
+            class="stopic-chip"
+            onclick="filterCards(this)"
+            data-tag="Regulatory Landscape"
+            >Regulatory Landscape</span
+          >
+          <span
+            class="stopic-chip"
+            onclick="filterCards(this)"
+            data-tag="Regulatory Landscape"
+            >Regulatory Landscape</span
+          >
+          <span
+            class="stopic-chip"
+            onclick="filterCards(this)"
+            data-tag="Evolutionary Impact"
+            >Evolutionary Impact</span
+          >
+          <span
+            class="stopic-chip"
+            onclick="filterCards(this)"
+            data-tag="Cookies"
+            >Cookies</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Article list -->
+    <section id="articles-list">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-4">
+          <div>
+            <div class="sec-eyebrow">Browse</div>
+            <h2 class="sec-title">Future & Ethics Articles</h2>
+          </div>
+          <span id="count-label" style="font-size: 0.82rem; color: var(--muted)"
+            >6 articles</span
+          >
+        </div>
+        <div class="row g-4" id="cards-grid">
+          <div class="col-md-6 col-lg-4 fade-up">
+            <a href="eth_neural.html" class="art-list-card">
+              <div class="alc-img c1">
+                <span class="alc-chip">Neural Interfaces</span>
+                Article Image
+              </div>
+              <div class="alc-body">
+                <h5>
+                  Neural Interfaces and the Consent Question: Who Owns Your
+                  Biometric Data?
+                </h5>
+                <p>
+                  As AI wearables collect increasingly intimate physiological
+                  signals, privacy law struggles to keep pace.
+                </p>
+              </div>
+              <div class="alc-footer">
+                <span>Amir Lopez &nbsp;&middot;&nbsp; 10 min read</span>
+                <span class="read-more-s"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-4 fade-up">
+            <a href="eth_neural.html" class="art-list-card">
+              <div class="alc-img c2">
+                <span class="alc-chip">Neural Interfaces</span>
+                Article Image
+              </div>
+              <div class="alc-body">
+                <h5>
+                  Brain-Computer Interfaces: From Medical Necessity to Consumer
+                  Product
+                </h5>
+                <p>
+                  The line between assistive medical device and consumer
+                  wearable is blurring — and regulators aren't ready.
+                </p>
+              </div>
+              <div class="alc-footer">
+                <span>Gianna Ebue &nbsp;&middot;&nbsp; 9 min read</span>
+                <span class="read-more-s"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-4 fade-up">
+            <a href="eth_regulatory.html" class="art-list-card">
+              <div class="alc-img c3">
+                <span class="alc-chip">Regulatory Landscape</span>
+                Article Image
+              </div>
+              <div class="alc-body">
+                <h5>
+                  The Regulatory Landscape of Wearable Health Devices in
+                  Southeast Asia
+                </h5>
+                <p>
+                  FDA, CE, and ASEAN-level frameworks each treat wearables
+                  differently — here's what developers need to know.
+                </p>
+              </div>
+              <div class="alc-footer">
+                <span>Mark España &nbsp;&middot;&nbsp; 8 min read</span>
+                <span class="read-more-s"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-4 fade-up">
+            <a href="eth_regulatory.html" class="art-list-card">
+              <div class="alc-img c4">
+                <span class="alc-chip">Regulatory Landscape</span>
+                Article Image
+              </div>
+              <div class="alc-body">
+                <h5>
+                  When Wearables Become Medical Devices: Classification,
+                  Liability, and the Grey Zone
+                </h5>
+                <p>
+                  A single firmware update can shift a consumer gadget into a
+                  regulated medical device. Who's responsible?
+                </p>
+              </div>
+              <div class="alc-footer">
+                <span>Kim Datuin &nbsp;&middot;&nbsp; 7 min read</span>
+                <span class="read-more-s"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-4 fade-up">
+            <a href="eth_evolutionary.html" class="art-list-card">
+              <div class="alc-img c5">
+                <span class="alc-chip">Evolutionary Impact</span>
+                Article Image
+              </div>
+              <div class="alc-body">
+                <h5>
+                  The Evolutionary Impact of Wearable Technology on Human
+                  Posture and Gait
+                </h5>
+                <p>
+                  Are generations raised with posture-correcting wearables
+                  developing differently? Early population data raises
+                  questions.
+                </p>
+              </div>
+              <div class="alc-footer">
+                <span>Patricia Pelicano &nbsp;&middot;&nbsp; 8 min read</span>
+                <span class="read-more-s"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-6 col-lg-4 fade-up">
+            <a href="eth_cookies.html" class="art-list-card">
+              <div class="alc-img c6">
+                <span class="alc-chip">Cookies</span>
+                Article Image
+              </div>
+              <div class="alc-body">
+                <h5>
+                  Cookies, Consent, and Continuous Monitoring: The Ethics of
+                  Always-On Wearables
+                </h5>
+                <p>
+                  Wearables that never sleep collect data 24/7 — what informed
+                  consent looks like in a world of ambient sensing.
+                </p>
+              </div>
+              <div class="alc-footer">
+                <span>Aica Ortega &nbsp;&middot;&nbsp; 6 min read</span>
+                <span class="read-more-s"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <p
+          id="no-results"
+          style="
+            display: none;
+            text-align: center;
+            color: var(--muted);
+            padding: 3rem 0;
+            font-size: 0.95rem;
+          "
+        >
+          No articles found for this topic.
+        </p>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-band">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="sec-eyebrow" style="color: rgba(221, 220, 242, 0.5)">
+              Stay informed
+            </div>
+            <h2>Get new articles on Future & Ethics straight to your inbox.</h2>
+            <p class="mt-3">
+              Weekly digest of the latest wearable science. No spam. Unsubscribe
+              anytime.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <div class="nl-form">
+              <input type="email" placeholder="your@email.com" /><button>
+                Subscribe
+              </button>
+            </div>
+            <div class="nl-note">Trusted by 12,000+ readers.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row g-5">
+          <!-- Brand -->
+          <div class="col-lg-3">
+            <div class="footer-logo">sensoria.</div>
+            <p class="footer-tagline">
+              Bridging wearable technology and human physiology. Educating
+              bodies, one article at a time.
+            </p>
+            <div class="footer-social mt-3">
+              <a href="#" class="soc-btn"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="soc-btn"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="soc-btn"><i class="bi bi-twitter-x"></i></a>
+              <a href="mailto:theergolab@sensoria.com" class="soc-btn"
+                ><i class="bi bi-envelope-fill"></i
+              ></a>
+            </div>
+            <div class="mt-4">
+              <div class="footer-heading">Contact</div>
+              <div class="footer-contact-item">
+                <i class="bi bi-instagram"></i> @_theergolab
+              </div>
+              <div class="footer-contact-item">
+                <i class="bi bi-envelope-fill"></i> theergolab@sensoria.com
+              </div>
+              <div class="footer-contact-item">
+                <i class="bi bi-facebook"></i> The Ergo Lab
+              </div>
+            </div>
+          </div>
+
+          <!-- The Cluster + Feedback -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">The Cluster</div>
+            <ul class="footer-links">
+              <li><a href="cluster.html">Wrist &amp; Forearm</a></li>
+              <li><a href="cluster.html">Head &amp; Neck</a></li>
+              <li><a href="cluster.html">Torso &amp; Smart Fabrics</a></li>
+            </ul>
+            <div class="footer-heading mt-4">Feedback</div>
+            <ul class="footer-links">
+              <li><a href="feedback.html">Haptic Reconditioning</a></li>
+              <li><a href="feedback.html">Gait &amp; Lower Limb</a></li>
+              <li><a href="feedback.html">Psychology of Ergonomics</a></li>
+            </ul>
+          </div>
+
+          <!-- Engineering + Case Studies -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">Engineering</div>
+            <ul class="footer-links">
+              <li><a href="engineering.html">Material Science</a></li>
+              <li>
+                <a href="engineering.html">Power &amp; Heat Management</a>
+              </li>
+              <li><a href="engineering.html">Anthropometrics</a></li>
+            </ul>
+            <div class="footer-heading mt-4">Case Studies</div>
+            <ul class="footer-links">
+              <li><a href="casestudies.html">Industrial / Exoskeletons</a></li>
+              <li><a href="casestudies.html">Athletic Performance</a></li>
+              <li><a href="casestudies.html">Medical / Rehabilitative</a></li>
+            </ul>
+          </div>
+
+          <!-- Ethics + General -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">Ethics</div>
+            <ul class="footer-links">
+              <li><a href="ethics.html">Neural Interfaces</a></li>
+              <li><a href="ethics.html">Regulatory Landscape</a></li>
+              <li><a href="ethics.html">Evolutionary Impact</a></li>
+              <li><a href="ethics.html">Cookies</a></li>
+            </ul>
+            <div class="footer-heading mt-4">General</div>
+            <ul class="footer-links">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="about.html">About / Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <!-- Meet the Team -->
+          <div class="col-lg-3">
+            <div class="footer-heading">Meet the Team</div>
+            <p
+              style="
+                font-size: 0.82rem;
+                opacity: 0.5;
+                margin-bottom: 1rem;
+                line-height: 1.6;
+              "
+            >
+              sensoria is a student project by
+              <strong style="color: var(--silver)">The Ergo Lab.</strong> —
+              Group 4, CIP 1101-CSAD.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 0.45rem">
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Leader:</span
+                >
+                Amir Lopez
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Content:</span
+                >
+                Gianna Ebue
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >UI Design:</span
+                >
+                Mico Parungao
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600">Dev:</span>
+                Pelicano &amp; Ortega
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600">QA:</span>
+                Bandoy &amp; Datuin
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Navigation:</span
+                >
+                Mark España
+              </div>
+            </div>
+            <p style="font-size: 0.72rem; opacity: 0.3; margin-top: 1rem">
+              Media sources: Unsplash, Freepik, Pexels
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div
+          class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2"
+        >
+          <span>© 2026 sensoria by The Ergo Lab. CIP 1101-CSAD · Group 4.</span>
+          <div class="d-flex gap-3">
+            <a href="#">Privacy Policy</a>
+            <a href="ethics.html">Cookies</a>
+            <a href="#">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/shared.js"></script>
+    <script src="../js/ethics.js"></script>
+    <script>
+      function filterCards(chip) {
+        document
+          .querySelectorAll(".stopic-chip")
+          .forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+        const tag = chip.dataset.tag;
+        const cards = document.querySelectorAll("#cards-grid > .col-md-6");
+        let visible = 0;
+        cards.forEach((card) => {
+          const cardTag =
+            card.querySelector(".alc-chip")?.textContent.trim() || "";
+          const show = tag === "all" || cardTag === tag;
+          ay = show ? "" : "none";
+          if (show) visible++;
+        });
+        const empty = document.getElementById("no-results");
+        if (empty) empty.style.display = visible === 0 ? "block" : "none";
+      }
+
+      // Scroll fade-in
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

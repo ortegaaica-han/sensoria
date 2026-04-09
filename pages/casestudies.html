@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Studies — sensoria</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/shared.css" />
+    <link rel="stylesheet" href="../css/casestudies.css" />
+    <style>
+      /* ── Case Studies index unique styles ── */
+      .cs-hero {
+        background: var(--haunted);
+        padding: 90px 0 70px;
+        position: relative;
+        overflow: hidden;
+      }
+      .cs-hero::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 440px;
+        height: 440px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(191, 141, 242, 0.15) 0%,
+          transparent 70%
+        );
+      }
+      .cs-hero h1 {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        color: var(--silver);
+        line-height: 1.1;
+      }
+      .cs-hero p {
+        color: rgba(221, 220, 242, 0.68);
+        font-size: 0.97rem;
+        line-height: 1.78;
+        max-width: 620px;
+        margin-top: 1rem;
+      }
+
+      /* sector cards */
+      #sectors {
+        padding: 90px 0;
+        background: var(--mag-grey);
+      }
+      .sector-card {
+        border-radius: 22px;
+        overflow: hidden;
+        border: 2px solid var(--silver);
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s,
+          border-color 0.3s;
+        background: #fff;
+        height: 100%;
+      }
+      .sector-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 56px rgba(53, 47, 89, 0.13);
+        border-color: var(--grape);
+      }
+      .sc-img {
+        height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+        position: relative;
+      }
+      .sc-img.industrial {
+        background: linear-gradient(135deg, #5a5470, var(--haunted));
+      }
+      .sc-img.athletic {
+        background: linear-gradient(135deg, #5a8a72, #2b2640);
+      }
+      .sc-img.medical {
+        background: linear-gradient(135deg, #6b629a, #2b2640);
+      }
+      .sc-sector-label {
+        position: absolute;
+        top: 16px;
+        left: 18px;
+        background: rgba(53, 47, 89, 0.82);
+        backdrop-filter: blur(4px);
+        color: var(--vodka);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        border-radius: 50px;
+        padding: 0.22rem 0.8rem;
+      }
+      .sc-body {
+        padding: 2rem;
+      }
+      .sc-body h3 {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1.5rem;
+        color: var(--haunted);
+        margin-bottom: 0.7rem;
+      }
+      .sc-body p {
+        font-size: 0.88rem;
+        color: var(--muted);
+        line-height: 1.72;
+      }
+      .sc-sub-list {
+        list-style: none;
+        padding: 0;
+        margin: 1.2rem 0;
+      }
+      .sc-sub-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-size: 0.82rem;
+        color: var(--muted);
+        padding: 0.4rem 0;
+        border-bottom: 1px solid var(--silver);
+      }
+      .sc-sub-list li:last-child {
+        border: none;
+      }
+      .sc-sub-list i {
+        color: var(--vodka);
+        font-size: 0.85rem;
+        flex-shrink: 0;
+      }
+      .sc-sub-list a {
+        color: var(--haunted);
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      .sc-sub-list a:hover {
+        color: var(--grape);
+      }
+      .sc-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--haunted);
+        color: var(--silver);
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 0.88rem;
+        font-weight: 700;
+        border: 2px solid var(--haunted);
+        border-radius: 10px;
+        padding: 0.65rem 1.5rem;
+        margin-top: 0.5rem;
+        transition:
+          background 0.25s,
+          color 0.25s,
+          transform 0.2s;
+      }
+      .sc-btn:hover {
+        background: var(--grape);
+        color: var(--haunted);
+        transform: translateY(-2px);
+      }
+
+      /* stats row */
+      .cs-stats {
+        padding: 60px 0;
+        background: #fff;
+        border-bottom: 1px solid var(--silver);
+      }
+      .cstat-num {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 2.6rem;
+        color: var(--haunted);
+        line-height: 1;
+      }
+      .cstat-label {
+        font-size: 0.72rem;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-top: 0.3rem;
+      }
+    </style>
+
+    <style id="shared-nav-override">
+      /* ── SHARED NAV + FOOTER OVERRIDE ── */
+      :root {
+        --mag-grey: #f0f0f2;
+        --haunted: #352f59;
+        --grape: #9e99bf;
+        --vodka: #bf8df2;
+        --silver: #dddcf2;
+        --dark-bg: #2b2640;
+        --body-text: #2d3436;
+        --muted: #5a5470;
+      }
+      /* ── NAVBAR ── */
+      .navbar {
+        background: var(--haunted);
+        border-bottom: 2px solid var(--grape);
+        position: sticky;
+        top: 0;
+        z-index: 1050;
+        padding: 0.65rem 0;
+      }
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-mark {
+        width: 36px;
+        height: 36px;
+        background: var(--silver);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        font-style: italic;
+        color: var(--haunted);
+        flex-shrink: 0;
+      }
+      .logo-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        font-style: italic;
+        color: var(--silver);
+        letter-spacing: 0.04em;
+      }
+      .navbar-nav .nav-link {
+        color: var(--silver) !important;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 0.4rem 0.9rem;
+        border-radius: 6px;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .navbar-nav .nav-link:hover {
+        color: var(--vodka) !important;
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .navbar-nav .nav-link.active {
+        color: var(--vodka) !important;
+        background: rgba(191, 141, 242, 0.12);
+      }
+      .nav-search-wrap {
+        position: relative;
+      }
+      .nav-search {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--grape);
+        border-radius: 50px;
+        padding: 0.35rem 1rem 0.35rem 2rem;
+        color: var(--silver);
+        font-size: 0.78rem;
+        outline: none;
+        width: 160px;
+        transition:
+          width 0.3s,
+          background 0.2s;
+      }
+      .nav-search::placeholder {
+        color: var(--grape);
+      }
+      .nav-search:focus {
+        width: 200px;
+        background: rgba(255, 255, 255, 0.13);
+      }
+      .nav-search-wrap .srch-icon {
+        position: absolute;
+        left: 0.7rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--grape);
+        font-size: 0.76rem;
+        pointer-events: none;
+      }
+      .navbar-toggler {
+        border: none;
+      }
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
+      /* ── FAT FOOTER ── */
+      footer {
+        background: var(--dark-bg) !important;
+        color: var(--silver) !important;
+        padding: 72px 0 0 !important;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 2rem;
+        color: var(--silver);
+        letter-spacing: 0.02em;
+        margin-bottom: 0.75rem;
+      }
+      .footer-tagline {
+        font-size: 0.83rem;
+        color: rgba(221, 220, 242, 0.5);
+        line-height: 1.7;
+        max-width: 260px;
+      }
+      .footer-social {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+      .soc-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(221, 220, 242, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--silver);
+        font-size: 0.9rem;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .soc-btn:hover {
+        background: var(--vodka);
+        border-color: var(--vodka);
+        color: var(--haunted);
+      }
+      .footer-heading {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--vodka);
+        margin-bottom: 0.75rem;
+      }
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .footer-links li {
+        margin-bottom: 0.45rem;
+      }
+      .footer-links a {
+        font-size: 0.82rem;
+        color: rgba(221, 220, 242, 0.6);
+        transition: color 0.18s;
+      }
+      .footer-links a:hover {
+        color: var(--silver);
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: rgba(221, 220, 242, 0.55);
+        margin-bottom: 0.4rem;
+      }
+      .footer-contact-item i {
+        color: var(--grape);
+        font-size: 0.85rem;
+      }
+      .footer-contact-item a {
+        color: rgba(221, 220, 242, 0.55);
+      }
+      .footer-contact-item a:hover {
+        color: var(--silver);
+      }
+      .footer-bottom {
+        padding: 1.2rem 0;
+        border-top: 1px solid rgba(221, 220, 242, 0.1);
+        font-size: 0.75rem;
+        color: rgba(221, 220, 242, 0.35);
+        margin-top: 3rem;
+      }
+      .footer-bottom a {
+        color: rgba(221, 220, 242, 0.35);
+        transition: color 0.18s;
+      }
+      .footer-bottom a:hover {
+        color: var(--silver);
+      }
+      /* ── breadcrumb ── */
+      .breadcrumb-bar {
+        background: #fff;
+        border-bottom: 1px solid var(--silver);
+        padding: 0.55rem 0;
+      }
+      .breadcrumb {
+        margin: 0;
+        font-size: 0.78rem;
+      }
+      .breadcrumb-item a {
+        color: var(--grape);
+      }
+      .breadcrumb-item.active {
+        color: var(--haunted);
+        font-weight: 600;
+      }
+      .breadcrumb-item + .breadcrumb-item::before {
+        color: var(--grape);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <div class="logo-mark">S</div>
+          <span class="logo-text">sensoria</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav mx-auto gap-lg-1">
+            <li class="nav-item">
+              <a class="nav-link" href="cluster.html">The Cluster</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="feedback.html">Feedback</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="casestudies.html"
+                >Case Studies</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="engineering.html">Engineering</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ethics.html">Ethics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+          <div class="nav-search-wrap mt-3 mt-lg-0">
+            <i class="bi bi-search srch-icon"></i>
+            <input
+              class="nav-search"
+              type="text"
+              placeholder="Search topics…"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="breadcrumb-bar">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+          <li class="breadcrumb-item active">Case Studies</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <header class="cs-hero">
+      <div class="container">
+        <div class="sec-eyebrow" style="color: rgba(221, 220, 242, 0.5)">
+          Real-world evidence
+        </div>
+        <h1>Case Studies</h1>
+        <p>
+          Wearable technology in action across three major sectors — industrial,
+          athletic, and medical. Each case study provides real deployment data
+          showing how smart devices protect bodies, improve performance, and
+          accelerate recovery.
+        </p>
+      </div>
+    </header>
+
+    <!-- Stats -->
+    <div class="cs-stats">
+      <div class="container">
+        <div class="row text-center g-4">
+          <div class="col-6 col-md-3 fade-up">
+            <div class="cstat-num">3</div>
+            <div class="cstat-label">Sectors covered</div>
+          </div>
+          <div class="col-6 col-md-3 fade-up">
+            <div class="cstat-num">9</div>
+            <div class="cstat-label">Case study articles</div>
+          </div>
+          <div class="col-6 col-md-3 fade-up">
+            <div class="cstat-num">4,000+</div>
+            <div class="cstat-label">Trial participants</div>
+          </div>
+          <div class="col-6 col-md-3 fade-up">
+            <div class="cstat-num">62%</div>
+            <div class="cstat-label">Avg. injury reduction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sector Cards -->
+    <section id="sectors">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="sec-eyebrow">Choose a sector</div>
+          <h2 class="sec-title">Browse Case Studies by Sector</h2>
+        </div>
+        <div class="row g-4">
+          <!-- Industrial -->
+          <div class="col-lg-4 fade-up">
+            <div class="sector-card">
+              <div class="sc-img industrial">
+                <span class="sc-sector-label">Industrial</span>
+                Article Image
+              </div>
+              <div class="sc-body">
+                <h3>Industrial / Exoskeletons</h3>
+                <p>
+                  Mechanical frames that redistribute gravitational load away
+                  from the lumbar spine and shoulders, reducing cumulative
+                  strain in warehouse, logistics, and manufacturing
+                  environments.
+                </p>
+                <ul class="sc-sub-list">
+                  <li>
+                    <i class="bi bi-file-earmark-text-fill"></i
+                    ><a href="cs_industrial.html"
+                      >Passive Back-Support Exoskeletons in Warehousing</a
+                    >
+                  </li>
+                  <li>
+                    <i class="bi bi-file-earmark-text-fill"></i
+                    ><a href="cs_industrial.html"
+                      >Shoulder Assist Devices in Automotive Assembly</a
+                    >
+                  </li>
+                  <li>
+                    <i class="bi bi-file-earmark-text-fill"></i
+                    ><a href="cs_industrial.html"
+                      >Full-Body Exosuits: Logistics Pilot Study</a
+                    >
+                  </li>
+                </ul>
+                <a href="cs_industrial.html" class="sc-btn"
+                  >View Studies <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Athletic -->
+          <div class="col-lg-4 fade-up">
+            <div class="sector-card">
+              <div class="sc-img athletic">
+                <span class="sc-sector-label">Athletic</span>
+                Article Image
+              </div>
+              <div class="sc-body">
+                <h3>Athletic Performance</h3>
+                <p>
+                  Motion-tracking suits, smart insoles, and joint-angle sensors
+                  giving coaches and athletes objective, real-time biomechanical
+                  data to correct form and prevent injury before it occurs.
+                </p>
+                <ul class="sc-sub-list">
+                  <li>
+                    <i class="bi bi-file-earmark-text-fill"></i
+                    ><a href="cs_athletic.html"
+                      >Motion-Tracking Suits in Elite Sprint Training</a
+                    >
+                  </li>
+                  <li>
+                    <i class="bi bi-file-earmark-text-fill"></i
+                    ><a href="cs_athletic.html"
+                      >Smart Insoles and Running Economy</a
+                    >
+                  </li>
+                  <li>
+                    <i class="bi bi-file-earmark-text-fill"></i
+                    ><a href="cs_athletic.html"
+                      >Wearable EMG in Strength &amp; Conditioning</a
+                    >
+                  </li>
+                </ul>
+                <a href="cs_athletic.html" class="sc-btn"
+                  >View Studies <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Medical -->
+          <div class="col-lg-4 fade-up">
+            <div class="sector-card">
+              <div class="sc-img medical">
+                <span class="sc-sector-label">Medical</span>
+                Article Image
+              </div>
+              <div class="sc-body">
+                <h3>Medical / Rehabilitative</h3>
+                <p>
+                  Smart rehabilitation gloves, posture sensors, and gait
+                  analysis insoles accelerating recovery from stroke, surgery,
+                  and musculoskeletal injury — with clinical trial evidence.
+                </p>
+                <ul class="sc-sub-list">
+                  <li>
+                    <i class="bi bi-file-earmark-text-fill"></i
+                    ><a href="cs_medical.html"
+                      >Smart Gloves in Post-Stroke Rehabilitation</a
+                    >
+                  </li>
+                  <li>
+                    <i class="bi bi-file-earmark-text-fill"></i
+                    ><a href="cs_medical.html"
+                      >Wearable Gait Analysis in Knee Replacement Recovery</a
+                    >
+                  </li>
+                  <li>
+                    <i class="bi bi-file-earmark-text-fill"></i
+                    ><a href="cs_medical.html"
+                      >Cervical Sensors in Chronic Neck Pain Management</a
+                    >
+                  </li>
+                </ul>
+                <a href="cs_medical.html" class="sc-btn"
+                  >View Studies <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-band">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="sec-eyebrow" style="color: rgba(221, 220, 242, 0.5)">
+              Stay informed
+            </div>
+            <h2>New case studies published monthly.</h2>
+            <p class="mt-3">
+              Get the latest wearable deployment data delivered to your inbox.
+              No spam. Unsubscribe anytime.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <div class="nl-form">
+              <input type="email" placeholder="your@email.com" /><button>
+                Subscribe
+              </button>
+            </div>
+            <div class="nl-note">Trusted by 12,000+ readers.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row g-5">
+          <!-- Brand -->
+          <div class="col-lg-3">
+            <div class="footer-logo">sensoria.</div>
+            <p class="footer-tagline">
+              Bridging wearable technology and human physiology. Educating
+              bodies, one article at a time.
+            </p>
+            <div class="footer-social mt-3">
+              <a href="#" class="soc-btn"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="soc-btn"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="soc-btn"><i class="bi bi-twitter-x"></i></a>
+              <a href="mailto:theergolab@sensoria.com" class="soc-btn"
+                ><i class="bi bi-envelope-fill"></i
+              ></a>
+            </div>
+            <div class="mt-4">
+              <div class="footer-heading">Contact</div>
+              <div class="footer-contact-item">
+                <i class="bi bi-instagram"></i> @_theergolab
+              </div>
+              <div class="footer-contact-item">
+                <i class="bi bi-envelope-fill"></i> theergolab@sensoria.com
+              </div>
+              <div class="footer-contact-item">
+                <i class="bi bi-facebook"></i> The Ergo Lab
+              </div>
+            </div>
+          </div>
+
+          <!-- The Cluster + Feedback -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">The Cluster</div>
+            <ul class="footer-links">
+              <li><a href="cluster.html">Wrist &amp; Forearm</a></li>
+              <li><a href="cluster.html">Head &amp; Neck</a></li>
+              <li><a href="cluster.html">Torso &amp; Smart Fabrics</a></li>
+            </ul>
+            <div class="footer-heading mt-4">Feedback</div>
+            <ul class="footer-links">
+              <li><a href="feedback.html">Haptic Reconditioning</a></li>
+              <li><a href="feedback.html">Gait &amp; Lower Limb</a></li>
+              <li><a href="feedback.html">Psychology of Ergonomics</a></li>
+            </ul>
+          </div>
+
+          <!-- Engineering + Case Studies -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">Engineering</div>
+            <ul class="footer-links">
+              <li><a href="engineering.html">Material Science</a></li>
+              <li>
+                <a href="engineering.html">Power &amp; Heat Management</a>
+              </li>
+              <li><a href="engineering.html">Anthropometrics</a></li>
+            </ul>
+            <div class="footer-heading mt-4">Case Studies</div>
+            <ul class="footer-links">
+              <li><a href="casestudies.html">Industrial / Exoskeletons</a></li>
+              <li><a href="casestudies.html">Athletic Performance</a></li>
+              <li><a href="casestudies.html">Medical / Rehabilitative</a></li>
+            </ul>
+          </div>
+
+          <!-- Ethics + General -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">Ethics</div>
+            <ul class="footer-links">
+              <li><a href="ethics.html">Neural Interfaces</a></li>
+              <li><a href="ethics.html">Regulatory Landscape</a></li>
+              <li><a href="ethics.html">Evolutionary Impact</a></li>
+              <li><a href="ethics.html">Cookies</a></li>
+            </ul>
+            <div class="footer-heading mt-4">General</div>
+            <ul class="footer-links">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="about.html">About / Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <!-- Meet the Team -->
+          <div class="col-lg-3">
+            <div class="footer-heading">Meet the Team</div>
+            <p
+              style="
+                font-size: 0.82rem;
+                opacity: 0.5;
+                margin-bottom: 1rem;
+                line-height: 1.6;
+              "
+            >
+              sensoria is a student project by
+              <strong style="color: var(--silver)">The Ergo Lab.</strong> —
+              Group 4, CIP 1101-CSAD.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 0.45rem">
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Leader:</span
+                >
+                Amir Lopez
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Content:</span
+                >
+                Gianna Ebue
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >UI Design:</span
+                >
+                Mico Parungao
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600">Dev:</span>
+                Pelicano &amp; Ortega
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600">QA:</span>
+                Bandoy &amp; Datuin
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Navigation:</span
+                >
+                Mark España
+              </div>
+            </div>
+            <p style="font-size: 0.72rem; opacity: 0.3; margin-top: 1rem">
+              Media sources: Unsplash, Freepik, Pexels
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div
+          class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2"
+        >
+          <span>© 2026 sensoria by The Ergo Lab. CIP 1101-CSAD · Group 4.</span>
+          <div class="d-flex gap-3">
+            <a href="#">Privacy Policy</a>
+            <a href="ethics.html">Cookies</a>
+            <a href="#">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

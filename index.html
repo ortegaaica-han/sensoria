@@ -1,0 +1,1951 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sensoria — Smart of All Time</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── BRAND PALETTE from PDF ── */
+      :root {
+        --mag-grey: #f0f0f2; /* Magnetic Grey  – bg */
+        --haunted: #352f59; /* Haunted Dreams  – primary dark */
+        --grape: #9e99bf; /* Grape Gatsby    – mid */
+        --vodka: #bf8df2; /* Vodka           – accent */
+        --silver: #dddcf2; /* Chinese Silver  – outline / light */
+        --dark-bg: #2b2640; /* deeper nav/footer */
+        --body-text: #2d3436;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background: var(--mag-grey);
+        color: var(--body-text);
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* ════════════════════════════════
+       STICKY HEADER
+    ════════════════════════════════ */
+      .navbar {
+        background: var(--haunted);
+        border-bottom: 2px solid var(--grape);
+        position: sticky;
+        top: 0;
+        z-index: 1050;
+        padding: 0.7rem 0;
+      }
+      /* logo */
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-mark {
+        width: 38px;
+        height: 38px;
+        background: var(--silver);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        font-style: italic;
+        color: var(--haunted);
+        flex-shrink: 0;
+      }
+      .logo-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.35rem;
+        font-style: italic;
+        color: var(--silver);
+        letter-spacing: 0.04em;
+      }
+      /* nav links */
+      .navbar-nav .nav-link {
+        color: var(--silver) !important;
+        font-size: 0.82rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 0.4rem 0.85rem;
+        transition: color 0.2s;
+      }
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: var(--vodka) !important;
+      }
+      /* dropdowns */
+      .dropdown-menu {
+        background: var(--dark-bg);
+        border: 1px solid var(--grape);
+        border-radius: 10px;
+        padding: 0.5rem 0;
+        min-width: 200px;
+      }
+      .dropdown-item {
+        color: var(--silver) !important;
+        font-size: 0.8rem;
+        padding: 0.55rem 1.2rem;
+        transition: background 0.2s;
+      }
+      .dropdown-item:hover {
+        background: rgba(191, 141, 242, 0.18);
+        color: var(--vodka) !important;
+      }
+      /* search */
+      .nav-search-wrap {
+        position: relative;
+      }
+      .nav-search {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--grape);
+        border-radius: 50px;
+        padding: 0.38rem 1rem 0.38rem 2rem;
+        color: var(--silver);
+        font-size: 0.8rem;
+        outline: none;
+        width: 170px;
+        transition:
+          width 0.3s,
+          background 0.2s;
+      }
+      .nav-search::placeholder {
+        color: var(--grape);
+      }
+      .nav-search:focus {
+        width: 210px;
+        background: rgba(255, 255, 255, 0.14);
+      }
+      .nav-search-wrap i {
+        position: absolute;
+        left: 0.7rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--grape);
+        font-size: 0.78rem;
+      }
+      .navbar-toggler {
+        border: none;
+      }
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
+
+      /* ════════════════════════════════
+       HERO — keeps original screenshot layout
+    ════════════════════════════════ */
+      #hero {
+        min-height: calc(100vh - 60px);
+        background: linear-gradient(
+          135deg,
+          var(--mag-grey) 52%,
+          var(--silver) 100%
+        );
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+      }
+      .hero-blob {
+        position: absolute;
+        right: -60px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: clamp(360px, 54vw, 720px);
+        aspect-ratio: 1;
+        background: radial-gradient(
+          ellipse at 60% 40%,
+          var(--silver) 0%,
+          var(--grape) 55%,
+          var(--haunted) 100%
+        );
+        border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+        opacity: 0.55;
+        z-index: 0;
+        animation: blobMorph 10s ease-in-out infinite alternate;
+      }
+      @keyframes blobMorph {
+        from {
+          border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+        }
+        to {
+          border-radius: 42% 58% 47% 53% / 58% 42% 52% 48%;
+        }
+      }
+      /* right-side real image — figure rises from blob */
+      .hero-img-col {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        width: 50%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        z-index: 1;
+        pointer-events: none;
+      }
+      .hero-img-shape {
+        width: clamp(280px, 40vw, 560px);
+        height: 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+      .hero-img-shape img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+        -webkit-mask-image: linear-gradient(
+          to top,
+          transparent 0%,
+          rgba(0, 0, 0, 0.1) 6%,
+          rgba(0, 0, 0, 0.65) 20%,
+          black 38%
+        );
+        mask-image: linear-gradient(
+          to top,
+          transparent 0%,
+          rgba(0, 0, 0, 0.1) 6%,
+          rgba(0, 0, 0, 0.65) 20%,
+          black 38%
+        );
+      }
+
+      /* left hero text */
+      .hero-text {
+        position: relative;
+        z-index: 2;
+      }
+      .hero-eyebrow {
+        display: inline-block;
+        background: rgba(158, 153, 191, 0.2);
+        border: 1px solid var(--grape);
+        color: var(--haunted);
+        border-radius: 50px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.28rem 1rem;
+        margin-bottom: 1rem;
+      }
+      .hero-text h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(3rem, 6vw, 5.6rem);
+        line-height: 1.04;
+        color: var(--haunted);
+        font-style: italic;
+      }
+      .hero-text .sub {
+        color: #5a5470;
+        font-size: 0.97rem;
+        line-height: 1.75;
+        max-width: 420px;
+        margin-top: 1.1rem;
+        font-weight: 400;
+      }
+      /* primary button — matches PDF spec */
+      .btn-primary-s {
+        display: inline-block;
+        background: var(--haunted);
+        color: var(--silver);
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 0.95rem;
+        font-weight: 700;
+        border: 2px solid var(--haunted);
+        border-radius: 10px;
+        padding: 0.72rem 1.8rem;
+        margin-top: 2rem;
+        transition:
+          background 0.25s,
+          color 0.25s,
+          transform 0.2s;
+      }
+      .btn-primary-s:hover {
+        background: var(--grape);
+        color: var(--haunted);
+        transform: translateY(-2px);
+      }
+      /* secondary button */
+      .btn-secondary-s {
+        display: inline-block;
+        background: transparent;
+        color: var(--haunted);
+        font-family: "Montserrat", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 500;
+        border: none;
+        padding: 0.72rem 1.4rem;
+        margin-top: 2rem;
+        margin-left: 0.5rem;
+        transition:
+          color 0.2s,
+          text-decoration 0.2s;
+      }
+      .btn-secondary-s:hover {
+        color: var(--grape);
+        text-decoration: underline;
+      }
+
+      /* ════════════════════════════════
+       VERTICAL SIDEBAR — circular buttons
+    ════════════════════════════════ */
+      #sidebar {
+        position: fixed;
+        top: 50%;
+        right: 18px;
+        transform: translateY(-50%);
+        z-index: 900;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .sbar-item {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--haunted);
+        border: 2px solid var(--grape);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition:
+          background 0.22s,
+          border-color 0.22s,
+          transform 0.22s,
+          box-shadow 0.22s;
+      }
+      .sbar-item i {
+        font-size: 1rem;
+        color: var(--silver);
+        transition: color 0.22s;
+        pointer-events: none;
+      }
+      .sbar-item:hover {
+        background: var(--grape);
+        border-color: var(--vodka);
+        transform: scale(1.15);
+        box-shadow: 0 4px 18px rgba(158, 153, 191, 0.4);
+      }
+      .sbar-item:hover i {
+        color: var(--haunted);
+      }
+      .sbar-item.active {
+        background: var(--vodka);
+        border-color: var(--vodka);
+        box-shadow: 0 4px 18px rgba(191, 141, 242, 0.45);
+      }
+      .sbar-item.active i {
+        color: var(--haunted);
+      }
+      /* tooltip label on hover */
+      .sbar-item::after {
+        content: attr(data-label);
+        position: absolute;
+        right: calc(100% + 10px);
+        background: var(--haunted);
+        color: var(--silver);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        padding: 0.3rem 0.7rem;
+        border-radius: 6px;
+        border: 1px solid var(--grape);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s;
+      }
+      .sbar-item:hover::after {
+        opacity: 1;
+      }
+      @media (max-width: 1100px) {
+        #sidebar {
+          display: none;
+        }
+      }
+
+      /* ════════════════════════════════
+       SHARED SECTION STYLES
+    ════════════════════════════════ */
+      .sec-eyebrow {
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--grape);
+        font-weight: 600;
+        margin-bottom: 0.35rem;
+      }
+      .sec-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        color: var(--haunted);
+        line-height: 1.2;
+      }
+
+      /* ════════════════════════════════
+       TOPIC PILLARS
+    ════════════════════════════════ */
+      #pillars {
+        padding: 90px 0;
+        background: #fff;
+      }
+      .pillar-card {
+        background: var(--mag-grey);
+        border-radius: 18px;
+        padding: 2rem 1.6rem;
+        border: 1.5px solid var(--silver);
+        height: 100%;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s,
+          border-color 0.3s;
+      }
+      .pillar-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 16px 44px rgba(53, 47, 89, 0.12);
+        border-color: var(--grape);
+      }
+      .pillar-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--silver), var(--grape));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.35rem;
+        color: var(--haunted);
+        margin-bottom: 1.1rem;
+      }
+      .pillar-card h5 {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        color: var(--haunted);
+        margin-bottom: 0.5rem;
+      }
+      .pillar-card p {
+        font-size: 0.87rem;
+        color: #5a5470;
+        line-height: 1.68;
+      }
+      .pillar-card .explore-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        color: var(--grape);
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        transition:
+          gap 0.2s,
+          color 0.2s;
+      }
+      .pillar-card .explore-link:hover {
+        gap: 0.6rem;
+        color: var(--haunted);
+      }
+
+      /* ════════════════════════════════
+       FEATURED ARTICLE (wide)
+    ════════════════════════════════ */
+      #featured {
+        padding: 90px 0;
+        background: var(--mag-grey);
+      }
+      .feat-card {
+        background: #fff;
+        border-radius: 20px;
+        border: 1.5px solid var(--silver);
+        overflow: hidden;
+        transition: box-shadow 0.3s;
+      }
+      .feat-card:hover {
+        box-shadow: 0 20px 56px rgba(53, 47, 89, 0.13);
+      }
+      .feat-img-ph {
+        min-height: 300px;
+        height: 100%;
+        background: linear-gradient(
+          150deg,
+          var(--silver) 0%,
+          var(--grape) 60%,
+          var(--haunted) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .feat-body {
+        padding: 2.5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .feat-tag {
+        display: inline-block;
+        background: rgba(158, 153, 191, 0.18);
+        border: 1px solid var(--grape);
+        border-radius: 50px;
+        color: var(--haunted);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.22rem 0.85rem;
+        margin-bottom: 0.9rem;
+      }
+      .feat-body h3 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+        color: var(--haunted);
+        line-height: 1.3;
+        margin-bottom: 0.8rem;
+      }
+      .feat-body p {
+        color: #5a5470;
+        font-size: 0.9rem;
+        line-height: 1.75;
+      }
+      .feat-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-top: 1.4rem;
+        font-size: 0.78rem;
+        color: var(--grape);
+      }
+      .ava-sm {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--silver), var(--grape));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: var(--haunted);
+      }
+
+      /* ════════════════════════════════
+       ARTICLE GRID
+    ════════════════════════════════ */
+      #articles {
+        padding: 90px 0;
+        background: #fff;
+      }
+      .art-card {
+        background: var(--mag-grey);
+        border-radius: 16px;
+        border: 1.5px solid var(--silver);
+        overflow: hidden;
+        height: 100%;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+      }
+      .art-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 40px rgba(53, 47, 89, 0.1);
+      }
+      .art-img-ph {
+        aspect-ratio: 16/9;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .art-img-ph.c1 {
+        background: linear-gradient(135deg, #c5c0e0, #6b629a);
+      }
+      .art-img-ph.c2 {
+        background: linear-gradient(135deg, #b8d4c8, #5a8a72);
+      }
+      .art-img-ph.c3 {
+        background: linear-gradient(135deg, #d4c8e0, #8a6aaa);
+      }
+      .art-img-ph.c4 {
+        background: linear-gradient(135deg, #c8d8e8, #5a7890);
+      }
+      .art-img-ph.c5 {
+        background: linear-gradient(135deg, #e0d4c0, #9a7850);
+      }
+      .art-img-ph.c6 {
+        background: linear-gradient(135deg, #d8c8d8, #8a5a8a);
+      }
+      .art-chip {
+        position: absolute;
+        top: 10px;
+        left: 12px;
+        background: rgba(53, 47, 89, 0.82);
+        backdrop-filter: blur(4px);
+        color: var(--silver);
+        font-size: 0.64rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        border-radius: 50px;
+        padding: 0.2rem 0.7rem;
+      }
+      .art-inner {
+        padding: 1.3rem;
+      }
+      .art-inner h5 {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: var(--haunted);
+        line-height: 1.4;
+        margin-bottom: 0.45rem;
+      }
+      .art-inner p {
+        font-size: 0.83rem;
+        color: #5a5470;
+        line-height: 1.65;
+      }
+      .art-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.9rem 1.3rem;
+        border-top: 1px solid var(--silver);
+        font-size: 0.74rem;
+        color: var(--grape);
+      }
+      .read-more {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        color: var(--haunted);
+        font-size: 0.78rem;
+        font-weight: 600;
+        transition:
+          gap 0.2s,
+          color 0.2s;
+      }
+      .read-more:hover {
+        gap: 0.55rem;
+        color: var(--grape);
+      }
+
+      /* ════════════════════════════════
+       CASE STUDIES BAND
+    ════════════════════════════════ */
+      #casestudies {
+        padding: 90px 0;
+        background: var(--haunted);
+        color: var(--silver);
+      }
+      #casestudies .sec-eyebrow {
+        color: var(--grape);
+      }
+      #casestudies .sec-title {
+        color: var(--silver);
+      }
+      .cs-card {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(221, 220, 242, 0.18);
+        border-radius: 16px;
+        padding: 2rem 1.6rem;
+        height: 100%;
+        transition:
+          background 0.3s,
+          border-color 0.3s;
+      }
+      .cs-card:hover {
+        background: rgba(191, 141, 242, 0.14);
+        border-color: var(--vodka);
+      }
+      .cs-sector {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--vodka);
+        margin-bottom: 0.5rem;
+      }
+      .cs-card h5 {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: var(--silver);
+        margin-bottom: 0.6rem;
+      }
+      .cs-card p {
+        font-size: 0.85rem;
+        color: rgba(221, 220, 242, 0.7);
+        line-height: 1.7;
+      }
+      .cs-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        color: var(--vodka);
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        transition: gap 0.2s;
+      }
+      .cs-link:hover {
+        gap: 0.6rem;
+      }
+
+      /* ════════════════════════════════
+       NEWSLETTER BAND
+    ════════════════════════════════ */
+      #newsletter {
+        padding: 80px 0;
+        background: linear-gradient(
+          135deg,
+          var(--grape) 0%,
+          var(--haunted) 100%
+        );
+        color: var(--silver);
+      }
+      #newsletter h2 {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        line-height: 1.25;
+      }
+      #newsletter p {
+        opacity: 0.75;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        max-width: 380px;
+      }
+      .nl-form {
+        display: flex;
+        max-width: 430px;
+      }
+      .nl-form input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1.5px solid rgba(221, 220, 242, 0.3);
+        border-radius: 10px 0 0 10px;
+        padding: 0.78rem 1.2rem;
+        color: var(--silver);
+        font-size: 0.88rem;
+        outline: none;
+      }
+      .nl-form input::placeholder {
+        color: rgba(221, 220, 242, 0.45);
+      }
+      .nl-form button {
+        background: var(--silver);
+        color: var(--haunted);
+        border: none;
+        border-radius: 0 10px 10px 0;
+        padding: 0.78rem 1.5rem;
+        font-weight: 700;
+        font-size: 0.85rem;
+        white-space: nowrap;
+        transition: background 0.2s;
+      }
+      .nl-form button:hover {
+        background: #fff;
+      }
+      .nl-note {
+        font-size: 0.72rem;
+        opacity: 0.4;
+        margin-top: 0.55rem;
+      }
+
+      /* ════════════════════════════════
+       FAT FOOTER
+    ════════════════════════════════ */
+      footer {
+        background: var(--dark-bg);
+        color: rgba(221, 220, 242, 0.7);
+        padding: 80px 0 0;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1.9rem;
+        color: var(--silver);
+        margin-bottom: 0.8rem;
+      }
+      .footer-tagline {
+        font-size: 0.85rem;
+        opacity: 0.55;
+        line-height: 1.7;
+        max-width: 270px;
+      }
+      .footer-heading {
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--vodka);
+        font-weight: 600;
+        margin-bottom: 1.1rem;
+      }
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+      .footer-links li {
+        margin-bottom: 0.55rem;
+      }
+      .footer-links a {
+        color: rgba(221, 220, 242, 0.55);
+        font-size: 0.85rem;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--silver);
+      }
+      .footer-links .sub-link {
+        font-size: 0.78rem;
+        color: rgba(221, 220, 242, 0.38);
+        padding-left: 0.8rem;
+        display: block;
+        margin-bottom: 0.3rem;
+        transition: color 0.2s;
+      }
+      .footer-links .sub-link:hover {
+        color: var(--grape);
+      }
+      .footer-social {
+        display: flex;
+        gap: 0.65rem;
+        margin-top: 1.4rem;
+      }
+      .soc-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        border: 1px solid rgba(221, 220, 242, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(221, 220, 242, 0.55);
+        font-size: 0.95rem;
+        transition: all 0.2s;
+      }
+      .soc-btn:hover {
+        background: var(--grape);
+        color: var(--haunted);
+        border-color: transparent;
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.85rem;
+        color: rgba(221, 220, 242, 0.6);
+        margin-bottom: 0.7rem;
+      }
+      .footer-contact-item i {
+        color: var(--vodka);
+        font-size: 0.95rem;
+      }
+      .footer-bottom {
+        margin-top: 60px;
+        padding: 1.4rem 0;
+        border-top: 1px solid rgba(221, 220, 242, 0.08);
+        font-size: 0.78rem;
+        color: rgba(221, 220, 242, 0.3);
+      }
+      .footer-bottom a {
+        color: rgba(221, 220, 242, 0.3);
+        transition: color 0.2s;
+      }
+      .footer-bottom a:hover {
+        color: var(--grape);
+      }
+
+      /* ════════════════════════════════
+       FADE-IN SCROLL
+    ════════════════════════════════ */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 991px) {
+        .hero-blob {
+          display: none;
+        }
+        .hero-img-col {
+          position: relative;
+          top: unset;
+          right: unset;
+          bottom: unset;
+          width: 100%;
+          margin-top: 2rem;
+        }
+        .hero-img-shape {
+          width: clamp(200px, 65vw, 380px);
+        }
+        #hero {
+          flex-direction: column;
+          padding-bottom: 60px;
+        }
+      }
+    </style>
+
+    <style id="shared-nav-override">
+      /* ── SHARED NAV + FOOTER OVERRIDE ── */
+      :root {
+        --mag-grey: #f0f0f2;
+        --haunted: #352f59;
+        --grape: #9e99bf;
+        --vodka: #bf8df2;
+        --silver: #dddcf2;
+        --dark-bg: #2b2640;
+        --body-text: #2d3436;
+        --muted: #5a5470;
+      }
+      /* ── NAVBAR ── */
+      .navbar {
+        background: var(--haunted);
+        border-bottom: 2px solid var(--grape);
+        position: sticky;
+        top: 0;
+        z-index: 1050;
+        padding: 0.65rem 0;
+      }
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-mark {
+        width: 36px;
+        height: 36px;
+        background: var(--silver);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        font-style: italic;
+        color: var(--haunted);
+        flex-shrink: 0;
+      }
+      .logo-text {
+        font-family: "Playfair Display", serif;
+        font-size: 1.3rem;
+        font-style: italic;
+        color: var(--silver);
+        letter-spacing: 0.04em;
+      }
+      .navbar-nav .nav-link {
+        color: var(--silver) !important;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        padding: 0.4rem 0.9rem;
+        border-radius: 6px;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .navbar-nav .nav-link:hover {
+        color: var(--vodka) !important;
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .navbar-nav .nav-link.active {
+        color: var(--vodka) !important;
+        background: rgba(191, 141, 242, 0.12);
+      }
+      .nav-search-wrap {
+        position: relative;
+      }
+      .nav-search {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--grape);
+        border-radius: 50px;
+        padding: 0.35rem 1rem 0.35rem 2rem;
+        color: var(--silver);
+        font-size: 0.78rem;
+        outline: none;
+        width: 160px;
+        transition:
+          width 0.3s,
+          background 0.2s;
+      }
+      .nav-search::placeholder {
+        color: var(--grape);
+      }
+      .nav-search:focus {
+        width: 200px;
+        background: rgba(255, 255, 255, 0.13);
+      }
+      .nav-search-wrap .srch-icon {
+        position: absolute;
+        left: 0.7rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--grape);
+        font-size: 0.76rem;
+        pointer-events: none;
+      }
+      .navbar-toggler {
+        border: none;
+      }
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+      .navbar-toggler-icon {
+        filter: invert(1);
+      }
+      /* ── FAT FOOTER ── */
+      footer {
+        background: var(--dark-bg) !important;
+        color: var(--silver) !important;
+        padding: 72px 0 0 !important;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 2rem;
+        color: var(--silver);
+        letter-spacing: 0.02em;
+        margin-bottom: 0.75rem;
+      }
+      .footer-tagline {
+        font-size: 0.83rem;
+        color: rgba(221, 220, 242, 0.5);
+        line-height: 1.7;
+        max-width: 260px;
+      }
+      .footer-social {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+      .soc-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(221, 220, 242, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--silver);
+        font-size: 0.9rem;
+        transition:
+          background 0.2s,
+          border-color 0.2s,
+          color 0.2s;
+      }
+      .soc-btn:hover {
+        background: var(--vodka);
+        border-color: var(--vodka);
+        color: var(--haunted);
+      }
+      .footer-heading {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--vodka);
+        margin-bottom: 0.75rem;
+      }
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .footer-links li {
+        margin-bottom: 0.45rem;
+      }
+      .footer-links a {
+        font-size: 0.82rem;
+        color: rgba(221, 220, 242, 0.6);
+        transition: color 0.18s;
+      }
+      .footer-links a:hover {
+        color: var(--silver);
+      }
+      .footer-contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: rgba(221, 220, 242, 0.55);
+        margin-bottom: 0.4rem;
+      }
+      .footer-contact-item i {
+        color: var(--grape);
+        font-size: 0.85rem;
+      }
+      .footer-contact-item a {
+        color: rgba(221, 220, 242, 0.55);
+      }
+      .footer-contact-item a:hover {
+        color: var(--silver);
+      }
+      .footer-bottom {
+        padding: 1.2rem 0;
+        border-top: 1px solid rgba(221, 220, 242, 0.1);
+        font-size: 0.75rem;
+        color: rgba(221, 220, 242, 0.35);
+        margin-top: 3rem;
+      }
+      .footer-bottom a {
+        color: rgba(221, 220, 242, 0.35);
+        transition: color 0.18s;
+      }
+      .footer-bottom a:hover {
+        color: var(--silver);
+      }
+      /* ── breadcrumb ── */
+      .breadcrumb-bar {
+        background: #fff;
+        border-bottom: 1px solid var(--silver);
+        padding: 0.55rem 0;
+      }
+      .breadcrumb {
+        margin: 0;
+        font-size: 0.78rem;
+      }
+      .breadcrumb-item a {
+        color: var(--grape);
+      }
+      .breadcrumb-item.active {
+        color: var(--haunted);
+        font-weight: 600;
+      }
+      .breadcrumb-item + .breadcrumb-item::before {
+        color: var(--grape);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ════════════════════════════
+     STICKY HEADER
+════════════════════════════ -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <div class="logo-mark">S</div>
+          <span class="logo-text">sensoria</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav mx-auto gap-lg-1">
+            <li class="nav-item">
+              <a class="nav-link" href="pages/cluster.html">The Cluster</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/feedback.html">Feedback</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/casestudies.html">Case Studies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/engineering.html">Engineering</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/ethics.html">Ethics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pages/about.html">About</a>
+            </li>
+          </ul>
+          <div class="nav-search-wrap mt-3 mt-lg-0">
+            <i class="bi bi-search srch-icon"></i>
+            <input
+              class="nav-search"
+              type="text"
+              placeholder="Search topics…"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ════════════════════════════
+     VERTICAL SIDEBAR
+════════════════════════════ -->
+    <aside id="sidebar">
+      <div
+        class="sbar-item active"
+        data-label="Home"
+        data-section="hero"
+        onclick="location.href = '#'"
+      >
+        <i class="bi bi-house-fill"></i>
+      </div>
+      <div
+        class="sbar-item"
+        data-label="The Cluster"
+        data-section="pillars"
+        onclick="location.href = '#pillars'"
+      >
+        <i class="bi bi-person-arms-up"></i>
+      </div>
+      <div
+        class="sbar-item"
+        data-label="Feedback"
+        data-section="featured"
+        onclick="location.href = '#featured'"
+      >
+        <i class="bi bi-broadcast-pin"></i>
+      </div>
+      <div
+        class="sbar-item"
+        data-label="Case Studies"
+        data-section="casestudies"
+        onclick="location.href = '#casestudies'"
+      >
+        <i class="bi bi-journal-medical"></i>
+      </div>
+      <div
+        class="sbar-item"
+        data-label="Engineering"
+        data-section="articles"
+        onclick="location.href = '#articles'"
+      >
+        <i class="bi bi-cpu-fill"></i>
+      </div>
+      <div
+        class="sbar-item"
+        data-label="About"
+        data-section="contact"
+        onclick="location.href = '#contact'"
+      >
+        <i class="bi bi-info-circle-fill"></i>
+      </div>
+    </aside>
+
+    <!-- ════════════════════════════
+     HERO
+════════════════════════════ -->
+    <section id="hero">
+      <div class="hero-blob"></div>
+
+      <!-- image right — Unsplash: woman checking smartwatch, athletic -->
+      <div class="hero-img-col d-none d-lg-flex">
+        <div class="hero-img-shape">
+          <img
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80&fit=crop&crop=top"
+            alt="Athlete checking smartwatch wearable device"
+          />
+        </div>
+      </div>
+
+      <!-- text left -->
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="hero-text">
+              <div class="hero-eyebrow">
+                Discover the Future of Smart Technology
+              </div>
+              <h1>Smart of<br /><em>All Time</em></h1>
+              <p class="sub">
+                Sensoria bridges the gap between wearable technologies and human
+                physiology — educating you on how smart devices correct posture,
+                reduce strain, and optimize movement.
+              </p>
+              <a href="#pillars" class="btn-primary-s">Explore More</a>
+              <a href="#contact" class="btn-secondary-s">About Us</a>
+            </div>
+          </div>
+        </div>
+        <!-- mobile image -->
+        <div class="d-flex d-lg-none justify-content-center mt-4">
+          <div
+            class="hero-img-shape"
+            style="width: clamp(220px, 70vw, 380px); height: 420px"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=80&fit=crop&crop=top"
+              alt="Athlete checking smartwatch wearable device"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+     TOPIC PILLARS
+════════════════════════════ -->
+    <section id="pillars">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="sec-eyebrow">What we cover</div>
+          <h2 class="sec-title">Five Pillars of Wearable Knowledge</h2>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg fade-up">
+            <div class="pillar-card">
+              <div class="pillar-icon">
+                <i class="bi bi-person-arms-up"></i>
+              </div>
+              <h5>Biomechanics</h5>
+              <p>
+                Exploring hardware's intersection with human anatomy — how
+                wearables align with natural movement to improve posture and
+                prevent injury.
+              </p>
+              <a href="#" class="explore-link"
+                >Read More <i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg fade-up">
+            <div class="pillar-card">
+              <div class="pillar-icon"><i class="bi bi-broadcast-pin"></i></div>
+              <h5>Feedback &amp; Behavior</h5>
+              <p>
+                How haptic cues and software nudges retrain muscle memory and
+                guide users toward healthier, sustainable movement patterns.
+              </p>
+              <a href="#" class="explore-link"
+                >Read More <i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg fade-up">
+            <div class="pillar-card">
+              <div class="pillar-icon">
+                <i class="bi bi-journal-medical"></i>
+              </div>
+              <h5>Case Studies</h5>
+              <p>
+                Real-world evidence across industrial exoskeletons, athletic
+                motion suits, and medical rehabilitation gloves.
+              </p>
+              <a href="#casestudies" class="explore-link"
+                >Read More <i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg fade-up">
+            <div class="pillar-card">
+              <div class="pillar-icon"><i class="bi bi-cpu-fill"></i></div>
+              <h5>Design &amp; Engineering</h5>
+              <p>
+                The technical "how" — from material science and anthropometrics
+                to power management and compact sensor systems.
+              </p>
+              <a href="#" class="explore-link"
+                >Read More <i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg fade-up">
+            <div class="pillar-card">
+              <div class="pillar-icon">
+                <i
+                  class="bi bi-balance-scale-fill"
+                  style="font-size: 1.2rem"
+                ></i>
+              </div>
+              <h5>Future &amp; Ethics</h5>
+              <p>
+                Long-term societal impacts, neural integration, regulatory
+                standards, and the ethics of AI-powered wearables.
+              </p>
+              <a href="#" class="explore-link"
+                >Read More <i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+     FEATURED ARTICLE
+════════════════════════════ -->
+    <section id="featured">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-5">
+          <div>
+            <div class="sec-eyebrow">Editor's pick</div>
+            <h2 class="sec-title">Featured Read</h2>
+          </div>
+          <a href="#articles" class="read-more d-none d-md-flex"
+            >View all articles <i class="bi bi-arrow-right"></i
+          ></a>
+        </div>
+        <div class="feat-card fade-up">
+          <div class="row g-0">
+            <div class="col-md-5">
+              <div class="feat-img-ph">Article Image</div>
+            </div>
+            <div class="col-md-7">
+              <div class="feat-body">
+                <div class="feat-tag">Feedback &amp; Behavior</div>
+                <h3>
+                  How Real-Time Haptic Feedback Is Rewiring the Way Our Bodies
+                  Learn Movement
+                </h3>
+                <p>
+                  At the core of wearable technology is the principle of
+                  real-time guidance. Haptic feedback and software nudges
+                  interact with the user — providing immediate signals when
+                  posture or habits deviate from optimal patterns, enabling
+                  on-the-spot correction rather than post-activity analysis.
+                </p>
+                <div class="feat-meta">
+                  <div class="ava-sm">GE</div>
+                  <span>Gianna Ebue &nbsp;·&nbsp; 9 min read</span>
+                  <span><i class="bi bi-eye"></i> 8.2k views</span>
+                </div>
+                <a
+                  href="pages/article_template.html"
+                  class="btn-primary-s d-inline-block"
+                  style="
+                    margin-top: 1.4rem;
+                    font-size: 0.85rem;
+                    padding: 0.6rem 1.4rem;
+                  "
+                  >Read Article <i class="bi bi-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+     ARTICLE GRID
+════════════════════════════ -->
+    <section id="articles">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-end mb-5">
+          <div>
+            <div class="sec-eyebrow">Recent posts</div>
+            <h2 class="sec-title">Latest Articles</h2>
+          </div>
+          <a href="#" class="read-more d-none d-md-flex"
+            >See all <i class="bi bi-arrow-right"></i
+          ></a>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4 fade-up">
+            <div class="art-card">
+              <div class="art-img-ph c1">
+                <span class="art-chip">Biomechanics</span>Article Image
+              </div>
+              <div class="art-inner">
+                <h5>
+                  Wrist &amp; Forearm Sensors: How They Decode Repetitive Strain
+                  Before It Becomes Injury
+                </h5>
+                <p>
+                  Examining how accelerometers and flex sensors in wrist bands
+                  detect micro-movements that predict RSI development.
+                </p>
+              </div>
+              <div class="art-footer">
+                <span>Mark España &nbsp;·&nbsp; 6 min</span>
+                <a href="#" class="read-more"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 fade-up">
+            <div class="art-card">
+              <div class="art-img-ph c2">
+                <span class="art-chip">Engineering</span>Article Image
+              </div>
+              <div class="art-inner">
+                <h5>
+                  Smart Fabrics: The Material Science Behind Textiles That
+                  Monitor Your Body
+                </h5>
+                <p>
+                  From conductive yarns to pressure-sensitive membranes — how
+                  engineers weave sensing capability into everyday clothing.
+                </p>
+              </div>
+              <div class="art-footer">
+                <span>Kim Datuin &nbsp;·&nbsp; 7 min</span>
+                <a href="#" class="read-more"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 fade-up">
+            <div class="art-card">
+              <div class="art-img-ph c3">
+                <span class="art-chip">Future &amp; Ethics</span>Article Image
+              </div>
+              <div class="art-inner">
+                <h5>
+                  Neural Interfaces and the Consent Question: Who Owns Your
+                  Biometric Data?
+                </h5>
+                <p>
+                  As AI wearables collect increasingly personal signals, privacy
+                  laws struggle to keep pace. What regulatory landscape is
+                  taking shape?
+                </p>
+              </div>
+              <div class="art-footer">
+                <span>Amir Lopez &nbsp;·&nbsp; 10 min</span>
+                <a href="#" class="read-more"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 fade-up">
+            <div class="art-card">
+              <div class="art-img-ph c4">
+                <span class="art-chip">Biomechanics</span>Article Image
+              </div>
+              <div class="art-inner">
+                <h5>
+                  Head &amp; Neck Posture: Why Your Smart Collar Knows More Than
+                  Your Physiotherapist
+                </h5>
+                <p>
+                  Inertial measurement units in cervical wearables can capture
+                  1,000 data points per second on head position and velocity.
+                </p>
+              </div>
+              <div class="art-footer">
+                <span>Aica Ortega &nbsp;·&nbsp; 5 min</span>
+                <a href="#" class="read-more"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 fade-up">
+            <div class="art-card">
+              <div class="art-img-ph c5">
+                <span class="art-chip">Feedback</span>Article Image
+              </div>
+              <div class="art-inner">
+                <h5>
+                  The Psychology of Haptic Nudges: Can Vibration Alone Change a
+                  Habit?
+                </h5>
+                <p>
+                  Behavioral science meets wearable design — a look at how
+                  feedback frequency, intensity, and timing influence long-term
+                  habit formation.
+                </p>
+              </div>
+              <div class="art-footer">
+                <span>Patricia Pelicano &nbsp;·&nbsp; 8 min</span>
+                <a href="#" class="read-more"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 fade-up">
+            <div class="art-card">
+              <div class="art-img-ph c6">
+                <span class="art-chip">Engineering</span>Article Image
+              </div>
+              <div class="art-inner">
+                <h5>
+                  Power &amp; Heat Management: How Wearables Stay Cool When Your
+                  Body Doesn't
+                </h5>
+                <p>
+                  Efficient power circuits and thermal dissipation strategies
+                  keep wearables safe, comfortable, and functional through
+                  intense activity.
+                </p>
+              </div>
+              <div class="art-footer">
+                <span>Noel Bandoy &nbsp;·&nbsp; 6 min</span>
+                <a href="#" class="read-more"
+                  >Read More <i class="bi bi-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+     CASE STUDIES
+════════════════════════════ -->
+    <section id="casestudies">
+      <div class="container">
+        <div class="text-center mb-5">
+          <div class="sec-eyebrow">Real-world applications</div>
+          <h2 class="sec-title">Case Studies</h2>
+          <p
+            class="mt-3"
+            style="
+              color: rgba(221, 220, 242, 0.65);
+              font-size: 0.92rem;
+              max-width: 520px;
+              margin: 1rem auto 0;
+            "
+          >
+            Wearables in action — across three major sectors that prove the
+            technology's tangible impact on human bodies and livelihoods.
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4 fade-up">
+            <div class="cs-card">
+              <div class="cs-sector">Industrial</div>
+              <h5>Exoskeletons</h5>
+              <p>
+                Back and shoulder frames redistribute load, reducing cumulative
+                strain and preventing musculoskeletal injury among workers who
+                lift heavy objects daily.
+              </p>
+              <a href="pages/casestudy_template.html" class="cs-link"
+                >Click to View <i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-4 fade-up">
+            <div class="cs-card">
+              <div class="cs-sector">Athletic</div>
+              <h5>Motion-Tracking Suits</h5>
+              <p>
+                Joint and limb sensors capture movement in real time, providing
+                coaches and athletes with objective data to correct form and
+                avoid injury before it occurs.
+              </p>
+              <a href="#" class="cs-link"
+                >Click to View <i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+          <div class="col-md-4 fade-up">
+            <div class="cs-card">
+              <div class="cs-sector">Medical</div>
+              <h5>Smart Rehabilitation Gloves</h5>
+              <p>
+                Finger and palm sensors guide precise motor movements,
+                accelerating recovery from stroke and injury while restoring
+                functional independence safely.
+              </p>
+              <a href="#" class="cs-link"
+                >Click to View <i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+     NEWSLETTER
+════════════════════════════ -->
+    <section id="newsletter">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="sec-eyebrow" style="color: rgba(221, 220, 242, 0.5)">
+              Stay informed
+            </div>
+            <h2>The latest on wearables,<br />right in your inbox.</h2>
+            <p class="mt-3">
+              New articles on biomechanics, engineering, and ethics — delivered
+              weekly. No spam. Built for curious minds.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <div class="nl-form">
+              <input type="email" placeholder="your@email.com" />
+              <button>Subscribe</button>
+            </div>
+            <div class="nl-note">
+              Trusted by 12,000+ readers. Unsubscribe anytime.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+     FAT FOOTER
+════════════════════════════ -->
+    <footer>
+      <div class="container">
+        <div class="row g-5">
+          <!-- Brand -->
+          <div class="col-lg-3">
+            <div class="footer-logo">sensoria.</div>
+            <p class="footer-tagline">
+              Bridging wearable technology and human physiology. Educating
+              bodies, one article at a time.
+            </p>
+            <div class="footer-social mt-3">
+              <a href="#" class="soc-btn"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="soc-btn"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="soc-btn"><i class="bi bi-twitter-x"></i></a>
+              <a href="mailto:theergolab@sensoria.com" class="soc-btn"
+                ><i class="bi bi-envelope-fill"></i
+              ></a>
+            </div>
+            <div class="mt-4">
+              <div class="footer-heading">Contact</div>
+              <div class="footer-contact-item">
+                <i class="bi bi-instagram"></i> @_theergolab
+              </div>
+              <div class="footer-contact-item">
+                <i class="bi bi-envelope-fill"></i> theergolab@sensoria.com
+              </div>
+              <div class="footer-contact-item">
+                <i class="bi bi-facebook"></i> The Ergo Lab
+              </div>
+            </div>
+          </div>
+
+          <!-- The Cluster + Feedback -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">The Cluster</div>
+            <ul class="footer-links">
+              <li><a href="pages/cluster.html">Wrist &amp; Forearm</a></li>
+              <li><a href="pages/cluster.html">Head &amp; Neck</a></li>
+              <li>
+                <a href="pages/cluster.html">Torso &amp; Smart Fabrics</a>
+              </li>
+            </ul>
+            <div class="footer-heading mt-4">Feedback</div>
+            <ul class="footer-links">
+              <li><a href="pages/feedback.html">Haptic Reconditioning</a></li>
+              <li><a href="pages/feedback.html">Gait &amp; Lower Limb</a></li>
+              <li>
+                <a href="pages/feedback.html">Psychology of Ergonomics</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Engineering + Case Studies -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">Engineering</div>
+            <ul class="footer-links">
+              <li><a href="pages/engineering.html">Material Science</a></li>
+              <li>
+                <a href="pages/engineering.html">Power &amp; Heat Management</a>
+              </li>
+              <li><a href="pages/engineering.html">Anthropometrics</a></li>
+            </ul>
+            <div class="footer-heading mt-4">Case Studies</div>
+            <ul class="footer-links">
+              <li>
+                <a href="pages/casestudies.html">Industrial / Exoskeletons</a>
+              </li>
+              <li><a href="pages/casestudies.html">Athletic Performance</a></li>
+              <li>
+                <a href="pages/casestudies.html">Medical / Rehabilitative</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Ethics + General -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">Ethics</div>
+            <ul class="footer-links">
+              <li><a href="pages/ethics.html">Neural Interfaces</a></li>
+              <li><a href="pages/ethics.html">Regulatory Landscape</a></li>
+              <li><a href="pages/ethics.html">Evolutionary Impact</a></li>
+              <li><a href="pages/ethics.html">Cookies</a></li>
+            </ul>
+            <div class="footer-heading mt-4">General</div>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="pages/about.html">About / Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <!-- Meet the Team -->
+          <div class="col-lg-3">
+            <div class="footer-heading">Meet the Team</div>
+            <p
+              style="
+                font-size: 0.82rem;
+                opacity: 0.5;
+                margin-bottom: 1rem;
+                line-height: 1.6;
+              "
+            >
+              sensoria is a student project by
+              <strong style="color: var(--silver)">The Ergo Lab.</strong> —
+              Group 4, CIP 1101-CSAD.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 0.45rem">
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Leader:</span
+                >
+                Amir Lopez
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Content:</span
+                >
+                Gianna Ebue
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >UI Design:</span
+                >
+                Mico Parungao
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600">Dev:</span>
+                Pelicano &amp; Ortega
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600">QA:</span>
+                Bandoy &amp; Datuin
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Navigation:</span
+                >
+                Mark España
+              </div>
+            </div>
+            <p style="font-size: 0.72rem; opacity: 0.3; margin-top: 1rem">
+              Media sources: Unsplash, Freepik, Pexels
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div
+          class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2"
+        >
+          <span>© 2026 sensoria by The Ergo Lab. CIP 1101-CSAD · Group 4.</span>
+          <div class="d-flex gap-3">
+            <a href="#">Privacy Policy</a>
+            <a href="pages/ethics.html">Cookies</a>
+            <a href="#">Terms</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Close mobile nav on link click
+      document
+        .querySelectorAll(
+          "#navMenu .nav-link:not(.dropdown-toggle), #navMenu .dropdown-item",
+        )
+        .forEach((l) => {
+          l.addEventListener("click", () => {
+            const c = bootstrap.Collapse.getInstance(
+              document.getElementById("navMenu"),
+            );
+            if (c) c.hide();
+          });
+        });
+
+      // Sidebar active state on scroll
+      const sbarItems = document.querySelectorAll(".sbar-item");
+      const sections = [
+        "hero",
+        "pillars",
+        "featured",
+        "casestudies",
+        "articles",
+        "contact",
+      ];
+      window.addEventListener("scroll", () => {
+        let current = "hero";
+        sections.forEach((id) => {
+          const el = document.getElementById(id);
+          if (el && window.scrollY >= el.offsetTop - 120) current = id;
+        });
+        sbarItems.forEach((item) => {
+          item.classList.toggle("active", item.dataset.section === current);
+        });
+      });
+
+      // Scroll fade-in
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>
