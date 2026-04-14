@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Conductive Polymers — sensoria</title>
+    <title>Smart Fabrics — sensoria</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -16,19 +16,19 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
       rel="stylesheet"
     />
+
+    <link href="../../../media/logo.png" rel="icon">
     <link href="../../../css/shared.css" rel="stylesheet">
     <link href="../../../css/article_template.css" rel="stylesheet" />
-
-    <style id="shared-nav-override">
-      
-    </style>
   </head>
   <body>
     <!-- ══ NAVBAR ══ -->
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand" href="../index.html">
-          <div class="logo-mark">S</div>
+        <a class="navbar-brand" href="../../../index.html">
+          <div class="logo-mark">
+            <img class="logo-img" src="../../../media/logo.png">
+          </div>
           <span class="logo-text">sensoria</span>
         </a>
         <button
@@ -42,22 +42,25 @@
         <div class="collapse navbar-collapse" id="navMenu">
           <ul class="navbar-nav mx-auto gap-lg-1">
             <li class="nav-item">
-              <a class="nav-link" href="cluster.html">The Cluster</a>
+              <a class="nav-link" href="../../articles.html">Articles</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="feedback.html">Feedback</a>
+              <a class="nav-link" href="../../cluster/cluster.html">The Cluster</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="casestudies.html">Case Studies</a>
+              <a class="nav-link" href="../../feedBack/feedback.html">Feedback</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="engineering.html">Engineering</a>
+              <a class="nav-link" href="../../casestudy/casestudies.html">Case Studies</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="ethics.html">Ethics</a>
+              <a class="nav-link active" href="../engineering.html">Engineering</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="../../ethics/ethics.html">Ethics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../../about/about.html">About</a>
             </li>
           </ul>
           <div class="nav-search-wrap mt-3 mt-lg-0">
@@ -76,12 +79,11 @@
     <div class="breadcrumb-bar">
       <div class="container">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Home</a></li>
           <li class="breadcrumb-item">
-            <a href="#">Engineering</a>
+            <a href="../engineering.html">Engineering & Design</a>
           </li>
-          <!-- ★ EDIT: update to match current article section -->
-          <li class="breadcrumb-item active">Power & Heat Management</li>
+          <li class="breadcrumb-item active">Hydrogel Interfaces for Wearable Sensors</li>
         </ol>
       </div>
     </div>
@@ -89,20 +91,22 @@
     <!-- ══ ARTICLE HERO ══ -->
     <header class="article-hero">
         <div class="container">
-            <div class="category-tag">Engineering · Power & Heat Management</div>
+            <div class="category-tag">Material Science</div>
 
             <h1>
-              Low-Power Sensor Engineering for Continuous Wearable Monitoring
+            Hydrogel Interfaces: The Future of Skin-Conformal Wearable Sensors
             </h1>
 
             <p class="subtitle">
-              Power efficiency determines how long wearable devices can function without overheating, 
-              draining battery, or compromising performance in real-time monitoring systems.
+            Hydrogels are soft, water-rich materials that mimic human tissue, enabling ultra-comfortable,
+            highly sensitive wearable sensor interfaces.
             </p>
 
             <div class="article-meta">
               <div class="meta-author">
-                <div class="ava">AO</div>
+                <div class="ava">
+                  <img class="ava-img" src="../../../media/aica.JPG">
+                </div>
               <div>
                 <div class="ava-name">Aica Ortega</div>
                 <div class="ava-role">Developer</div>
@@ -110,17 +114,17 @@
             </div>
             <div class="meta-divider d-none d-md-block"></div>
               <div class="meta-stat">
-                  <i class="bi bi-calendar3"></i> April 12, 2026
+                  <i class="bi bi-calendar3"></i> April 11, 2026
               </div>
             <div class="meta-stat"><i class="bi bi-clock"></i> 6 min read</div>
-            <div class="meta-stat"><i class="bi bi-eye"></i> 10,001 views</div>
+            <div class="meta-stat"><i class="bi bi-eye"></i> 6,120 views</div>
             </div>
 
             <div class="hero-img-wrap">
               <div class="hero-img-ph">
                   <img
-                  src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=1200&q=80&fit=crop"
-                  alt="Advanced wearable material science and smart fabric engineering"
+                  src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=1400&auto=format&fit=crop"
+                  alt="Hydrogel material in biomedical engineering"
                   />
               </div>
             </div>
@@ -136,91 +140,109 @@
             <article class="article-content">
               <!-- ★ EDIT: replace all content below with actual article body -->
                 <p>
-                In wearable technology, power is not just a resource — it is a constraint that defines 
-                everything from device size to performance capability. Unlike stationary electronics, 
-                wearables must operate continuously while remaining lightweight, compact, and safe for the human body.
+                As wearable technology becomes increasingly integrated into healthcare and performance monitoring,
+                material scientists are shifting toward interfaces that behave more like human tissue. One of the
+                most promising materials in this field is the <strong>hydrogel</strong>.
                 </p>
 
                 <p>
-                This creates a fundamental engineering challenge: how to maximize energy efficiency 
-                while minimizing heat output and physical bulk. Power management systems are therefore 
-                a critical part of wearable design.
+                    Hydrogels are soft, flexible networks of polymers that contain large amounts of water. Their
+                    mechanical and biological properties make them ideal for skin-contact applications in next-generation
+                    wearable sensors.
                 </p>
 
-                <h2 id="section-1">Understanding Power Consumption in Wearables</h2>
+                <h2 id="section-1">What Are Hydrogels?</h2>
                 <p>
-                Wearable devices consume energy through sensors, microcontrollers, wireless communication modules, 
-                and haptic feedback systems. Each component contributes to the overall energy demand.
-                </p>
-
-                <p>
-                For example, continuous heart rate monitoring requires constant sensor activation, 
-                while Bluetooth transmission periodically sends data to external devices, increasing power usage.
-                </p>
-
-                <h2 id="section-2">Energy Optimization Strategies</h2>
-                <p>
-                Engineers reduce power consumption by implementing low-energy chips, sleep modes, 
-                and adaptive sampling rates. These techniques allow devices to operate only when necessary.
+                    Hydrogels are three-dimensional polymer structures that absorb and retain water without dissolving.
+                    This gives them a soft, elastic consistency similar to biological tissues.
                 </p>
 
                 <p>
-                For instance, instead of sampling motion data every millisecond, a wearable may switch to 
-                event-based activation when movement is detected.
+                    Because of this similarity, hydrogels are widely used in biomedical engineering, drug delivery systems,
+                    and now wearable sensor interfaces.
                 </p>
 
-                <h2 id="section-3">Balancing Performance and Battery Life</h2>
+                <h2 id="section-2">Hydrogels in Wearable Engineering</h2>
                 <p>
-                A major design challenge is balancing real-time responsiveness with long battery life. 
-                Higher performance typically requires more energy, which can lead to faster depletion.
+                    In wearable systems, hydrogels act as a bridge between electronic components and human skin.
+                    They improve signal quality by reducing impedance and enhancing electrical contact.
                 </p>
 
                 <p>
-                Power-efficient algorithms help maintain functionality without sacrificing user experience.
+                    For example, hydrogel electrodes are commonly used in ECG and EMG monitoring patches due to their
+                    comfort and signal stability.
                 </p>
 
-                <h2 id="section-4">The Future of Energy-Efficient Wearables</h2>
+                <div class="callout">
+                    <div class="callout-label">Engineering Insight</div>
+                    <p>
+                    Hydrogels can be engineered to be conductive by embedding ionic salts or conductive polymers,
+                    enabling them to transmit bioelectrical signals effectively.
+                    </p>
+                </div>
+
+                <h2 id="section-3">Advantages of Hydrogel Interfaces</h2>
+                <p>Hydrogels provide several key benefits in wearable applications:</p>
+
+                <ul>
+                    <li>Excellent skin conformity and comfort</li>
+                    <li>High signal accuracy for bio-sensing</li>
+                    <li>Soft, non-irritating interface</li>
+                    <li>Biocompatibility for long-term wear</li>
+                </ul>
+
+                <h2 id="section-4">Challenges in Practical Use</h2>
                 <p>
-                Future systems may rely on energy harvesting technologies such as motion, heat, 
-                or solar energy to supplement battery power.
+                    Despite their advantages, hydrogels face several engineering limitations.
+                    They tend to dry out over time, reducing performance and lifespan.
+                </p>
+
+                <p>
+                    They are also mechanically weak compared to synthetic elastomers, making them vulnerable
+                    to tearing under repeated stress.
+                </p>
+
+                <h2 id="section-5">Future of Hydrogel-Based Wearables</h2>
+                <p>
+                    Researchers are developing self-healing hydrogels, stretch-resistant composites,
+                    and moisture-retaining systems to extend usability in real-world environments.
+                </p>
+
+                <p>
+                    In the future, hydrogel interfaces may enable fully invisible, skin-like wearable systems
+                    for continuous health monitoring.
                 </p>
 
                 <div class="article-tags">
-                <span class="art-tag">Power Efficiency</span>
-                <span class="art-tag">Wearable Systems</span>
-                <span class="art-tag">Energy Management</span>
-                <span class="art-tag">Engineering</span>
+                    <span class="art-tag">Hydrogels</span>
+                    <span class="art-tag">Biointerfaces</span>
+                    <span class="art-tag">Wearable Sensors</span>
+                    <span class="art-tag">Material Science</span>
                 </div>
 
-                <h2 class="section" id="references">References</h2>
+                <h2 id="references">References</h2>
                 <div class="references-list">
-                  <p>
-                    G. Z. Yang,
-                    <em>Body Sensor Networks</em>.
-                    London: Springer, 2014.
-                  </p>
+                    <p>
+                    Caló, E., & Khutoryanskiy, V. V. (2015).
+                    <em>Biomedical applications of hydrogels: A review.</em> European Polymer Journal.
+                    </p>
 
-                  <p>
-                    J. Gubbi, R. Buyya, S. Marusic, and M. Palaniswami,
-                    “Internet of Things (IoT): A Vision, Architectural Elements, and Future Directions,”
-                    <em>Future Generation Computer Systems</em>,
-                    vol. 29, no. 7, pp. 1645–1660, 2013.
-                  </p>
+                    <p>
+                    Li, J., & Mooney, D. J. (2016).
+                    <em>Designing hydrogels for controlled drug delivery.</em> Nature Reviews Materials.
+                    </p>
 
-                  <p>
-                    O. Chipara et al.,
-                    “Reliable Clinical Monitoring Using Wireless Sensor Networks,”
-                    <em>Proceedings of the 6th ACM Conference on Embedded Network Sensor Systems</em>,
-                    pp. 155–168, 2008.
-                  </p>
+                    <p>
+                    Yuk, H., et al. (2019).
+                    <em>Hydrogel interfaces for soft electronics.</em> Nature Communications.
+                    </p>
 
-                  <p>
-                    S. Roundy, D. Steingart, L. Frechette, P. K. Wright, and J. Rabaey,
-                    “Power Sources for Wireless Sensor Networks,”
-                    <em>Wireless Sensor Networks</em>,
-                    pp. 1–17, 2004.
-                  </p>
+                    <p>
+                    Annabi, N., et al. (2017).
+                    <em>Engineering hydrogels for biomedical applications.</em> Advanced Materials.
+                    </p>
                 </div>
+
             </article>
           </div>
 
@@ -245,26 +267,11 @@
                 <div class="sidebar-heading">In This Article</div>
                 <!-- ★ EDIT: update TOC links to match your h2 IDs and titles -->
                 <ul class="toc-list">
-                  <li>
-                    <a href="#section-1" class="toc-link">
-                    Understanding Power Consumption in Wearables
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#section-2" class="toc-link">
-                    Energy Optimization Strategies
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#section-3" class="toc-link">
-                    Balancing Performance and Battery Life
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#section-4" class="toc-link">
-                    Future of Energy-Efficient Wearables
-                    </a>
-                  </li>
+                  <li><a href="#section-1" class="toc-link">What Are Hydrogels?</a></li>
+                  <li><a href="#section-2" class="toc-link">Hydrogels in Wearable Engineering</a></li>
+                  <li><a href="#section-3" class="toc-link">Advantages of Hydrogel Interfaces</a></li>
+                  <li><a href="#section-4" class="toc-link">Challenges in Practical Use</a></li>
+                  <li><a href="#section-5" class="toc-link">Future of Hydrogel Wearables</a></li>
                 </ul>
               </div>
 
@@ -283,46 +290,7 @@
                   </button>
                 </div>
               </div>
-
-              <!-- Related in sidebar -->
-              <div class="sidebar-card">
-                <div class="sidebar-heading">Related Reads</div>
-                <!-- ★ EDIT: swap with actual related article titles/links -->
-                <div class="related-mini">
-                <div class="related-mini-thumb">Img</div>
-                <div>
-                    <a href="thermal-dissipation.html" class="related-mini-title">
-                    Thermal Dissipation in Wearables: Managing Heat in Compact Devices
-                    </a>
-                    <div class="related-mini-meta">
-                    Engineering · 4 min
-                    </div>
-                </div>
-                </div>
-
-                <div class="related-mini">
-                <div class="related-mini-thumb">Img</div>
-                <div>
-                    <a href="nanomaterials-wearables.html" class="related-mini-title">
-                    Nanomaterials in Wearable Engineering
-                    </a>
-                    <div class="related-mini-meta">
-                    Material Science · 7 min
-                    </div>
-                </div>
-                </div>
-
-                <div class="related-mini">
-                <div class="related-mini-thumb">Img</div>
-                <div>
-                    <a href="smart-fabrics.html" class="related-mini-title">
-                    Smart Fabrics: Interactive Engineering Systems
-                    </a>
-                    <div class="related-mini-meta">
-                    Material Science · 6 min
-                    </div>
-                </div>
-                </div>
+            </div>
     </section>
 
     <!-- ══ RELATED ARTICLES (bottom) ══ -->
@@ -330,7 +298,7 @@
       <div class="container">
         <div class="mb-4">
           <div class="sec-eyebrow">Keep reading</div>
-          <h2 class="sec-title">More from Engineering &amp; Material Science</h2>
+          <h2 class="sec-title">More from <i>Material Science</i></h2>
         </div>
         <div class="row g-4">
           <!-- ★ EDIT: replace with real related articles -->
@@ -340,74 +308,73 @@
                 class="rel-img-ph"
                 style="background: linear-gradient(135deg, #c5c0e0, #6b629a)"
               >
-                <span class="rel-chip">Feedback</span>
+                <img src="https://images.unsplash.com/photo-1615565016433-69797a5e3e11?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <span class="rel-chip">Material Science</span>
               </div>
               <div class="rel-body">
                 <h5>
-                  The Psychology of Haptic Nudges: Can Vibration Alone Change a
-                  Habit?
+                  Conductive Polymers: The Backbone of Flexible Wearable Electronics
                 </h5>
                 <p>
-                  Behavioral science meets wearable design — how frequency,
-                  intensity, and timing of haptic cues influence long-term habit
-                  formation.
+                  Conductive polymers are revolutionizing wearable systems by allowing electrical signals to travel through flexible, skin-safe materials without sacrificing comfort or mobility.
                 </p>
               </div>
               <div class="rel-footer">
-                <span>Patricia Pelicano · 8 min</span>
-                <a href="#" class="read-more"
+                <span>Aica Ortega · 5 min</span>
+                <a href="conductive-polymers.html" class="read-more"
                   >Read More <i class="bi bi-arrow-right"></i
                 ></a>
               </div>
             </div>
           </div>
+
           <div class="col-md-4">
             <div class="rel-card">
               <div
                 class="rel-img-ph"
                 style="background: linear-gradient(135deg, #b8d4c8, #5a8a72)"
               >
-                <span class="rel-chip">Biomechanics</span>
+                <img src="https://images.unsplash.com/photo-1543906919-602ac82be64a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <span class="rel-chip">Material Science</span>
               </div>
               <div class="rel-body">
                 <h5>
-                  Gait &amp; Lower Limb Analysis: What Your Footstrike Reveals
-                  About Your Health
+                  Nanomaterials in Wearables: The Future of Lightweight Performance Engineering
                 </h5>
                 <p>
-                  Pressure insoles and ankle IMUs are giving physiotherapists
-                  data they never had before — here's what they're learning.
+                  From graphene to carbon nanotubes, nanomaterials are redefining strength, conductivity, and flexibility in next-generation wearable devices.
                 </p>
               </div>
               <div class="rel-footer">
-                <span>Aica Ortega · 6 min</span>
-                <a href="#" class="read-more"
+                <span>Aica Ortega · 5 min</span>
+                <a href="nanomaterials.html" class="read-more"
                   >Read More <i class="bi bi-arrow-right"></i
                 ></a>
               </div>
             </div>
           </div>
+
           <div class="col-md-4">
             <div class="rel-card">
               <div
                 class="rel-img-ph"
-                style="background: linear-gradient(135deg, #d4c8e0, #8a6aaa)"
+                style="background: linear-gradient(135deg, #b8d4c8, #5a8a72)"
               >
-                <span class="rel-chip">Engineering</span>
+                <img src="https://images.unsplash.com/photo-1581090700227-1e8a2b9f5a3c?q=80&w=1170&auto=format&fit=crop">
+                <span class="rel-chip">Material Science</span>
               </div>
               <div class="rel-body">
                 <h5>
-                  Wrist &amp; Forearm Sensors: Decoding Repetitive Strain Before
-                  It Becomes Injury
+                  Durability & Sweat Resistance in Wearable Materials
                 </h5>
                 <p>
-                  How accelerometers and flex sensors in wrist bands detect
-                  micro-movements that predict RSI development weeks in advance.
+                  Exploring how modern wearable materials resist moisture, sweat corrosion,
+                  and long-term mechanical wear in real-world conditions.
                 </p>
               </div>
               <div class="rel-footer">
-                <span>Mark España · 6 min</span>
-                <a href="#" class="read-more"
+                <span>Aica Ortega · 6 min</span>
+                <a href="durability-sweat-resistance.html" class="read-more"
                   >Read More <i class="bi bi-arrow-right"></i
                 ></a>
               </div>
@@ -431,9 +398,7 @@
             <div class="footer-social mt-3">
               <a href="#" class="soc-btn"><i class="bi bi-instagram"></i></a>
               <a href="#" class="soc-btn"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="soc-btn"><i class="bi bi-twitter-x"></i></a>
-              <a href="mailto:theergolab@sensoria.com" class="soc-btn"
-                ><i class="bi bi-envelope-fill"></i
+              <a href="#" class="soc-btn"><i class="bi bi-envelope-fill"></i
               ></a>
             </div>
             <div class="mt-4">
@@ -442,7 +407,7 @@
                 <i class="bi bi-instagram"></i> @_theergolab
               </div>
               <div class="footer-contact-item">
-                <i class="bi bi-envelope-fill"></i> theergolab@sensoria.com
+                <i class="bi bi-envelope-fill"></i> <a href="/cdn-cgi/l/email-protection">theergolab@gmail.com</a>
               </div>
               <div class="footer-contact-item">
                 <i class="bi bi-facebook"></i> The Ergo Lab
@@ -454,15 +419,19 @@
           <div class="col-6 col-lg-2">
             <div class="footer-heading">The Cluster</div>
             <ul class="footer-links">
-              <li><a href="cluster.html">Wrist &amp; Forearm</a></li>
-              <li><a href="cluster.html">Head &amp; Neck</a></li>
-              <li><a href="cluster.html">Torso &amp; Smart Fabrics</a></li>
+              <li><a href="../../cluster/cluster.html">Wrist &amp; Forearm</a></li>
+              <li><a href="../../cluster/cluster.html">Head &amp; Neck</a></li>
+              <li>
+                <a href="../../cluster/cluster.html">Torso &amp; Smart Fabrics</a>
+              </li>
             </ul>
             <div class="footer-heading mt-4">Feedback</div>
             <ul class="footer-links">
-              <li><a href="feedback.html">Haptic Reconditioning</a></li>
-              <li><a href="feedback.html">Gait &amp; Lower Limb</a></li>
-              <li><a href="feedback.html">Psychology of Ergonomics</a></li>
+              <li><a href="../../feedBack/feedback.html">Haptic Reconditioning</a></li>
+              <li><a href="../../feedBack/feedback.html">Gait &amp; Lower Limb</a></li>
+              <li>
+                <a href="../../feedBack/feedback.html">Psychology of Ergonomics</a>
+              </li>
             </ul>
           </div>
 
@@ -470,17 +439,21 @@
           <div class="col-6 col-lg-2">
             <div class="footer-heading">Engineering</div>
             <ul class="footer-links">
-              <li><a href="engineering.html">Material Science</a></li>
+              <li><a href="../engineering.html">Material Science</a></li>
               <li>
-                <a href="engineering.html">Power &amp; Heat Management</a>
+                <a href="../engineering.html">Power &amp; Heat Management</a>
               </li>
-              <li><a href="engineering.html">Anthropometrics</a></li>
+              <li><a href="../engineering.html">Anthropometrics</a></li>
             </ul>
             <div class="footer-heading mt-4">Case Studies</div>
             <ul class="footer-links">
-              <li><a href="casestudies.html">Industrial / Exoskeletons</a></li>
-              <li><a href="casestudies.html">Athletic Performance</a></li>
-              <li><a href="casestudies.html">Medical / Rehabilitative</a></li>
+              <li>
+                <a href="../../casestudy/casestudies.html">Industrial / Exoskeletons</a>
+              </li>
+              <li><a href="../../casestudy/casestudies.html">Athletic Performance</a></li>
+              <li>
+                <a href="../../casestudy/casestudies.html">Medical / Rehabilitative</a>
+              </li>
             </ul>
           </div>
 
@@ -488,16 +461,17 @@
           <div class="col-6 col-lg-2">
             <div class="footer-heading">Ethics</div>
             <ul class="footer-links">
-              <li><a href="ethics.html">Neural Interfaces</a></li>
-              <li><a href="ethics.html">Regulatory Landscape</a></li>
-              <li><a href="ethics.html">Evolutionary Impact</a></li>
-              <li><a href="ethics.html">Cookies</a></li>
+              <li><a href="../../ethics/ethics.html">Neural Interfaces</a></li>
+              <li><a href="../../ethics/ethics.html">Regulatory Landscape</a></li>
+              <li><a href="../../ethics/ethics.html">Evolutionary Impact</a></li>
             </ul>
             <div class="footer-heading mt-4">General</div>
             <ul class="footer-links">
-              <li><a href="../index.html">Home</a></li>
-              <li><a href="about.html">About / Contact</a></li>
-              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Home</a></li>
+              <li><a href="../../about/about.html">About / Contact</a></li>
+              <li><a href="../../privacy.html">Privacy Policy</a></li>
+              <li><a href="../../cookies.html">Cookies</a></li>
+              <li><a href="../../terms.html">Terms</a></li>
             </ul>
           </div>
 
@@ -519,33 +493,33 @@
             <div style="display: flex; flex-direction: column; gap: 0.45rem">
               <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
                 <span style="color: var(--vodka); font-weight: 600"
-                  >Leader:</span
+                  >Team Leader:</span
                 >
                 Amir Lopez
               </div>
               <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
                 <span style="color: var(--vodka); font-weight: 600"
-                  >Content:</span
+                  >Content Manager:</span
                 >
                 Gianna Ebue
               </div>
               <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
                 <span style="color: var(--vodka); font-weight: 600"
-                  >UI Design:</span
+                  >UI Designer:</span
                 >
                 Mico Parungao
               </div>
               <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
-                <span style="color: var(--vodka); font-weight: 600">Dev:</span>
-                Pelicano &amp; Ortega
+                <span style="color: var(--vodka); font-weight: 600">Developers:</span>
+                Patricia Pelicano &amp; Aica Ortega
               </div>
               <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
-                <span style="color: var(--vodka); font-weight: 600">QA:</span>
-                Bandoy &amp; Datuin
+                <span style="color: var(--vodka); font-weight: 600">Quality Assurance:</span>
+                Noel Bandoy &amp; Kim Datuin
               </div>
               <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
                 <span style="color: var(--vodka); font-weight: 600"
-                  >Navigation:</span
+                  >Navigation Expert:</span
                 >
                 Mark España
               </div>
@@ -563,15 +537,16 @@
         >
           <span>© 2026 sensoria by The Ergo Lab. CIP 1101-CSAD · Group 4.</span>
           <div class="d-flex gap-3">
-            <a href="#">Privacy Policy</a>
-            <a href="ethics.html">Cookies</a>
-            <a href="#">Terms</a>
+            <a href="../../privacy.html">Privacy Policy</a>
+            <a href="../../cookies.html">Cookies</a>
+            <a href="../../terms.html">Terms</a>
           </div>
         </div>
       </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/article_template.js"></script>
+    <script src="../../../js/article_template.js"></script>
+    <script src="../../../js/shared.js"></script>
   </body>
 </html>
