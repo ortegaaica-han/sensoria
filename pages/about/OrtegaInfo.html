@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ★ EDIT: Author name -->
+    <title>Aica Ortega — sensoria</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link href="../../media/logo.png" rel="icon">
+    <link href="../../css/authors.css" rel="stylesheet">
+    <link href="../../css/shared.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <div class="logo-mark">
+            <img class="logo-img" src="../../media/logo.png">
+          </div>
+          <span class="logo-text">sensoria</span>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav mx-auto gap-lg-1">
+            <li class="nav-item">
+              <a class="nav-link" href="../articles.html">Articles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../cluster/cluster.html">The Cluster</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../feedBack/feedback.html">Feedback</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../casestudy/casestudies.html">Case Studies</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../engineering/engineering.html">Engineering</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../ethics/ethics.html">Ethics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">About</a>
+            </li>
+          </ul>
+          <div class="nav-search-wrap mt-3 mt-lg-0">
+            <i class="bi bi-search srch-icon"></i>
+            <input
+              class="nav-search"
+              type="text"
+              placeholder="Search topics…"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-bar">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="about.html">About</a></li>
+          <!-- ★ EDIT: author name -->
+          <li class="breadcrumb-item active">Aica Ortega</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+     AUTHOR HERO
+══════════════════════════════ -->
+    <header class="author-hero">
+      <div class="container">
+        <div
+          class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-4"
+        >
+          <!-- Avatar -->
+          <div class="author-avatar">
+            <img src="../../media/aica.jpg">
+          </div>
+
+          <!-- Text -->
+          <div class="author-hero-text">
+            <!-- ★ EDIT: role -->
+            <div class="author-role-badge">Developer</div>
+            <!-- ★ EDIT: full name -->
+            <div class="author-name">Aica Ortega</div>
+            <!-- ★ EDIT: short bio -->
+            <p class="author-bio">
+              Optimizes the front-end interface through responsive design, dynamic interactivity, and rigorous cross-browser testing. Aica bridges the gap between static design and live functionality — from adaptive mobile-first frameworks to the elimination of browser-specific inconsistencies.
+            </p>
+
+            <div class="author-stats">
+              <div>
+                <!-- ★ EDIT: update count to match actual articles -->
+                <div class="author-stat-num">10</div>
+                <div class="author-stat-label">Articles</div>
+              </div>
+              <div>
+                <!-- ★ EDIT: update pillar count -->
+                <div class="author-stat-num">1</div>
+                <div class="author-stat-label">Pillars Covered</div>
+              </div>
+              <div>
+                <div class="author-stat-num">2026</div>
+                <div class="author-stat-label">Since</div>
+              </div>
+            </div>
+
+            <!-- ★ EDIT: add/remove social links as needed -->
+            <div class="author-socials">
+              <a href="https://www.instagram.com/herrschii_" class="author-soc-btn"
+                ><i class="bi bi-instagram"></i> Instagram</a
+              >
+              <a href="mailto:ortega.aica@ue.edu.ph" class="author-soc-btn"
+                ><i class="bi bi-envelope-fill"></i> Email</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══════════════════════════════
+     FILTER STRIP
+══════════════════════════════ -->
+    <div class="filter-strip">
+      <div class="container">
+        <div class="d-flex gap-2 flex-wrap align-items-center">
+          <span
+            style="
+              font-size: 0.75rem;
+              font-weight: 600;
+              color: var(--muted);
+              margin-right: 0.3rem;
+            "
+            >Filter by pillar:</span
+          >
+          <!-- ★ EDIT: update chip-count numbers to match real article counts -->
+          <button
+            class="filter-chip active"
+            onclick="filterArticles(this, 'all')"
+          >
+            All <span class="chip-count">10</span>
+          </button>
+          <button class="filter-chip" onclick="filterArticles(this, 'cluster')">
+            The Cluster <span class="chip-count">0</span>
+          </button>
+          <button
+            class="filter-chip"
+            onclick="filterArticles(this, 'feedback')"
+          >
+            Feedback <span class="chip-count">0</span>
+          </button>
+          <button
+            class="filter-chip"
+            onclick="filterArticles(this, 'engineering')"
+          >
+            Engineering <span class="chip-count">10</span>
+          </button>
+          <button
+            class="filter-chip"
+            onclick="filterArticles(this, 'casestudies')"
+          >
+            Case Studies <span class="chip-count">0</span>
+          </button>
+          <button class="filter-chip" onclick="filterArticles(this, 'ethics')">
+            Ethics <span class="chip-count">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+     ARTICLES GRID
+══════════════════════════════ -->
+    <section id="articles-section">
+      <div class="container">
+        <div class="section-label">Articles by this author</div>
+
+        <div class="row g-4" id="articles-grid">
+          <!-- ══════════════════════════════
+           ★ EDIT: duplicate this card block for each article.
+             - Set data-pillar to: cluster | feedback | engineering | casestudies | ethics
+             - Set .art-card-img class to: p-cluster | p-feedback | p-engineering | p-casestudies | p-ethics
+             - Update .art-pillar-chip text to match the pillar name
+             - Update title, excerpt, read time, and href
+      ══════════════════════════════ -->
+
+          <!-- CARD 1 — The Cluster -->
+          <div class="col-md-6 col-lg-4 fade-up" data-pillar="engineering">
+            <a class="art-card" href="../engineering/Anthropometrics/body-measurements.html">
+              <div class="art-card-img p-engineering">
+                <img src="https://images.unsplash.com/photo-1526256262350-7da7584cf5eb">
+                <div class="art-pillar-chip">Anthropometrics</div>
+              </div>
+              <div class="art-card-body">
+                <!-- ★ EDIT: article title -->
+                <h5>
+                  Body Measurements in Design
+                </h5>
+                <!-- ★ EDIT: short excerpt -->
+                <p>
+                  How human body data is used to create safer, more comfortable, and more efficient product and workspace designs.
+                </p>
+              </div>
+              <div class="art-card-footer">
+                <!-- ★ EDIT: read time -->
+                <span><i class="bi bi-clock me-1"></i> 8 min read</span>
+                <span class="read-link"
+                  >Read <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4 fade-up" data-pillar="engineering">
+            <a class="art-card" href="../engineering/Anthropometrics/ergonomic-fit.html">
+              <div class="art-card-img p-engineering">
+                <img src="https://images.unsplash.com/photo-1615387000482-2f3d4b2c50d4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <div class="art-pillar-chip">Anthropometrics</div>
+              </div>
+              <div class="art-card-body">
+                <!-- ★ EDIT: article title -->
+                <h5>
+                  Ergonomic Fit Systems: Why Size and Form Matter in Wearable Design
+                </h5>
+                <!-- ★ EDIT: short excerpt -->
+                <p>
+                  Understanding the human body is the first step in wearable engineering—anthropometrics ensures that every 
+                  device is designed for comfort, accuracy, and real-world usability across different body types.
+                </p>
+              </div>
+              <div class="art-card-footer">
+                <!-- ★ EDIT: read time -->
+                <span><i class="bi bi-clock me-1"></i> 10 min read</span>
+                <span class="read-link"
+                  >Read <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4 fade-up" data-pillar="engineering">
+            <a class="art-card" href="../engineering/Anthropometrics/motion-analysis.html">
+              <div class="art-card-img p-engineering">
+                <img src="https://images.unsplash.com/photo-1525426250015-4e6473cdbf17?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <div class="art-pillar-chip">Anthropometrics</div>
+              </div>
+              <div class="art-card-body">
+                <!-- ★ EDIT: article title -->
+                <h5>
+                  Human Motion Metrics: Translating Body Movement into Engineering Data
+                </h5>
+                <!-- ★ EDIT: short excerpt -->
+                <p>
+                  Wearable systems must move with the body, not against it—joint-based anthropometric design ensures 
+                  sensors and structures align with natural motion for accurate and unrestricted performance.
+                </p>
+              </div>
+              <div class="art-card-footer">
+                <!-- ★ EDIT: read time -->
+                <span><i class="bi bi-clock me-1"></i> 7 min read</span>
+                <span class="read-link"
+                  >Read <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4 fade-up" data-pillar="engineering">
+            <a class="art-card" href="../engineering/MaterialScience/conductive-polymers.html">
+              <div class="art-card-img p-engineering">
+                <img src="https://images.unsplash.com/photo-1615565016433-69797a5e3e11?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <div class="art-pillar-chip">MaterialScience</div>
+              </div>
+              <div class="art-card-body">
+                <!-- ★ EDIT: article title -->
+                <h5>
+                  Conductive Polymers: The Backbone of Flexible Wearable Electronics
+                </h5>
+                <!-- ★ EDIT: short excerpt -->
+                <p>
+                  Conductive polymers are revolutionizing wearable systems by allowing
+                  electrical signals to travel through flexible, skin-safe materials without
+                  sacrificing comfort or mobility.
+                </p>
+              </div>
+              <div class="art-card-footer">
+                <!-- ★ EDIT: read time -->
+                <span><i class="bi bi-clock me-1"></i> 7 min read</span>
+                <span class="read-link"
+                  >Read <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4 fade-up" data-pillar="engineering">
+            <a class="art-card" href="../engineering/MaterialScience/durability-sweat-resistance.html">
+              <div class="art-card-img p-engineering">
+                <img src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=1400&auto=format&fit=crop">
+                <div class="art-pillar-chip">MaterialScience</div>
+              </div>
+              <div class="art-card-body">
+                <!-- ★ EDIT: article title -->
+                <h5>
+                  Durability & Sweat Resistance in Wearable Materials
+                </h5>
+                <!-- ★ EDIT: short excerpt -->
+                <p>
+                  Exploring how modern wearable materials resist moisture, sweat corrosion,
+                  and long-term mechanical wear in real-world conditions.
+                </p>
+              </div>
+              <div class="art-card-footer">
+                <!-- ★ EDIT: read time -->
+                <span><i class="bi bi-clock me-1"></i> 6 min read</span>
+                <span class="read-link"
+                  >Read <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4 fade-up" data-pillar="engineering">
+            <a class="art-card" href="../engineering/MaterialScience/nanomaterials.html">
+              <div class="art-card-img p-engineering">
+                <img src="https://images.unsplash.com/photo-1543906919-602ac82be64a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <div class="art-pillar-chip">MaterialScience</div>
+              </div>
+              <div class="art-card-body">
+                <!-- ★ EDIT: article title -->
+                <h5>
+                  Nanomaterials in Wearables: The Future of Lightweight Performance Engineering
+                </h5>
+                <!-- ★ EDIT: short excerpt -->
+                <p>
+                  From graphene to carbon nanotubes, nanomaterials are redefining strength,
+                  conductivity, and flexibility in next-generation wearable devices.
+                </p>
+              </div>
+              <div class="art-card-footer">
+                <!-- ★ EDIT: read time -->
+                <span><i class="bi bi-clock me-1"></i> 5 min read</span>
+                <span class="read-link"
+                  >Read <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4 fade-up" data-pillar="engineering">
+            <a class="art-card" href="../engineering/MaterialScience/smart-fabrics.html">
+              <div class="art-card-img p-engineering">
+                <img src="https://plus.unsplash.com/premium_photo-1663954132195-3ccf6b91e7a9?q=80&w=1396&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <div class="art-pillar-chip">MaterialScience</div>
+              </div>
+              <div class="art-card-body">
+                <!-- ★ EDIT: article title -->
+                <h5>
+                  Smart Fabrics: How Textiles Are Becoming Interactive Engineering Systems
+                </h5>
+                <!-- ★ EDIT: short excerpt -->
+                <p>
+                  Smart textiles integrate sensors, conductive fibers, and responsive materials
+                  to transform ordinary clothing into real-time data systems.
+                </p>
+              </div>
+              <div class="art-card-footer">
+                <!-- ★ EDIT: read time -->
+                <span><i class="bi bi-clock me-1"></i> 5 min read</span>
+                <span class="read-link"
+                  >Read <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4 fade-up" data-pillar="engineering">
+            <a class="art-card" href="../engineering/Power&HeatManagement/battery-systems.html">
+              <div class="art-card-img p-engineering">
+                <img src="https://images.unsplash.com/photo-1640545232337-5cb2c7b24ca8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <div class="art-pillar-chip">Power&HeatManagement</div>
+              </div>
+              <div class="art-card-body">
+                <!-- ★ EDIT: article title -->
+                <h5>
+                  Battery Efficiency and Flexible Power Systems in Wearable Technology
+                </h5>
+                <!-- ★ EDIT: short excerpt -->
+                <p>
+                  Energy harvesting technologies allow wearables to generate power from motion, heat, 
+                  and environmental sources, reducing dependency on traditional batteries.
+                </p>
+              </div>
+              <div class="art-card-footer">
+                <!-- ★ EDIT: read time -->
+                <span><i class="bi bi-clock me-1"></i> 5 min read</span>
+                <span class="read-link"
+                  >Read <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4 fade-up" data-pillar="engineering">
+            <a class="art-card" href="../engineering/Power&HeatManagement/low-power-sensors.html">
+              <div class="art-card-img p-engineering">
+                <img src="https://images.unsplash.com/photo-1722289016701-7661d52f38c5?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <div class="art-pillar-chip">Power&HeatManagement</div>
+              </div>
+              <div class="art-card-body">
+                <!-- ★ EDIT: article title -->
+                <h5>
+                  Low-Power Sensor Engineering for Continuous Wearable Monitoring
+                </h5>
+                <!-- ★ EDIT: short excerpt -->
+                <p>
+                  Power efficiency determines how long wearable devices can function without overheating, 
+                  draining battery, or compromising performance in real-time monitoring systems.
+                </p>
+              </div>
+              <div class="art-card-footer">
+                <!-- ★ EDIT: read time -->
+                <span><i class="bi bi-clock me-1"></i> 6 min read</span>
+                <span class="read-link"
+                  >Read <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-6 col-lg-4 fade-up" data-pillar="engineering">
+            <a class="art-card" href="../engineering/Power&HeatManagement/thermal-dissipation.html">
+              <div class="art-card-img p-engineering">
+                <img src="https://images.unsplash.com/photo-1642229407351-7473e9482a94?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+                <div class="art-pillar-chip">Power&HeatManagement</div>
+              </div>
+              <div class="art-card-body">
+                <!-- ★ EDIT: article title -->
+                <h5>
+                  Thermal Dissipation in Wearables: Managing Heat in Compact Devices
+                </h5>
+                <!-- ★ EDIT: short excerpt -->
+                <p>
+                  Thermal regulation ensures that wearable devices remain safe and comfortable by controlling heat generation, 
+                  dissipation, and material response during continuous use.
+                </p>
+              </div>
+              <div class="art-card-footer">
+                <!-- ★ EDIT: read time -->
+                <span><i class="bi bi-clock me-1"></i> 4 min read</span>
+                <span class="read-link"
+                  >Read <i class="bi bi-arrow-right"></i
+                ></span>
+              </div>
+            </a>
+          </div>
+        <!-- /articles-grid -->
+
+        <!-- Empty state (shown by JS when filter matches nothing) -->
+        <div class="empty-state" id="empty-state">
+          <i class="bi bi-journal-x"></i>
+          <p style="font-weight: 600; color: var(--haunted)">
+            No articles found
+          </p>
+          <p style="font-size: 0.85rem">
+            This author hasn't written anything under that pillar yet.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════
+     EXPLORE OTHER AUTHORS
+══════════════════════════════ -->
+    <section id="explore-authors">
+      <div class="container">
+        <div class="section-label">Explore Other Authors</div>
+        <div class="row g-4" id="authors-grid">
+
+          <!-- ★ EDIT: Author card 1 -->
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <a class="author-card" href="LopezInfo.html">
+              <div class="author-card-avatar">
+                <img src="../../media/amir.jpg">
+              </div>
+              <div class="author-card-name">Amir Jo-hanz Lopez</div>
+              <span class="author-card-role">Team Leader</span>
+              <div class="author-card-meta">
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">8</span>
+                  <span class="author-card-meta-label">Articles</span>
+                </div>
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">4</span>
+                  <span class="author-card-meta-label">Pillars</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- ★ EDIT: Author card 2 -->
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <a class="author-card" href="ParungaoInfo.html">
+              <div class="author-card-avatar">
+                <img src="../../media/mico.jpg">
+              </div>
+              <div class="author-card-name">Mico Krenz Parungao</div>
+              <span class="author-card-role">UI Design</span>
+              <div class="author-card-meta">
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">6</span>
+                  <span class="author-card-meta-label">Articles</span>
+                </div>
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">3</span>
+                  <span class="author-card-meta-label">Pillars</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- ★ EDIT: Author card 3 -->
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <a class="author-card" href="EspanaInfo.html">
+              <div class="author-card-avatar">
+                <img src="../../media/mark.jpg">
+              </div>
+              <div class="author-card-name">Mark Elwyn España</div>
+              <span class="author-card-role">Navigation</span>
+              <div class="author-card-meta">
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">5</span>
+                  <span class="author-card-meta-label">Articles</span>
+                </div>
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">3</span>
+                  <span class="author-card-meta-label">Pillars</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- ★ EDIT: Author card 4 -->
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <a class="author-card" href="PelicanoInfo.html">
+              <div class="author-card-avatar">
+                <img src="../../media/pat.jpg">
+              </div>
+              <div class="author-card-name">Patricia Ysabelle Pelicano</div>
+              <span class="author-card-role">Dev</span>
+              <div class="author-card-meta">
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">7</span>
+                  <span class="author-card-meta-label">Articles</span>
+                </div>
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">2</span>
+                  <span class="author-card-meta-label">Pillars</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <a class="author-card" href="EbueInfo.html">
+              <div class="author-card-avatar">
+                <img src="../../media/gianna.jpg">
+              </div>
+              <div class="author-card-name">Gianna Ebue</div>
+              <span class="author-card-role">Content</span>
+              <div class="author-card-meta">
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">7</span>
+                  <span class="author-card-meta-label">Articles</span>
+                </div>
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">2</span>
+                  <span class="author-card-meta-label">Pillars</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <a class="author-card" href="BandoyInfo.html">
+              <div class="author-card-avatar">
+                <img src="../../media/noel.jpg">
+              </div>
+              <div class="author-card-name">Aldrin Noel Bandoy</div>
+              <span class="author-card-role">Dev</span>
+              <div class="author-card-meta">
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">7</span>
+                  <span class="author-card-meta-label">Articles</span>
+                </div>
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">2</span>
+                  <span class="author-card-meta-label">Pillars</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 fade-up">
+            <a class="author-card" href="DatuinInfo.html">
+              <div class="author-card-avatar">
+                <img src="../../media/kim.jpg">
+              </div>
+              <div class="author-card-name">Kimberly Datuin</div>
+              <span class="author-card-role">Dev</span>
+              <div class="author-card-meta">
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">7</span>
+                  <span class="author-card-meta-label">Articles</span>
+                </div>
+                <div class="author-card-meta-item">
+                  <span class="author-card-meta-num">2</span>
+                  <span class="author-card-meta-label">Pillars</span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row g-5">
+          <!-- Brand -->
+          <div class="col-lg-3">
+            <div class="footer-logo">sensoria.</div>
+            <p class="footer-tagline">
+              Bridging wearable technology and human physiology. Educating
+              bodies, one article at a time.
+            </p>
+            <div class="footer-social mt-3">
+              <a href="#" class="soc-btn"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="soc-btn"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="soc-btn"><i class="bi bi-envelope-fill"></i
+              ></a>
+            </div>
+            <div class="mt-4">
+              <div class="footer-heading">Contact</div>
+              <div class="footer-contact-item">
+                <i class="bi bi-instagram"></i> @_theergolab
+              </div>
+              <div class="footer-contact-item">
+                <i class="bi bi-envelope-fill"></i> <a href="/cdn-cgi/l/email-protection">theergolab@gmail.com</a>
+              </div>
+              <div class="footer-contact-item">
+                <i class="bi bi-facebook"></i> The Ergo Lab
+              </div>
+            </div>
+          </div>
+
+          <!-- The Cluster + Feedback -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">The Cluster</div>
+            <ul class="footer-links">
+              <li><a href="../cluster/cluster.html">Wrist &amp; Forearm</a></li>
+              <li><a href="../cluster/cluster.html">Head &amp; Neck</a></li>
+              <li>
+                <a href="../cluster/cluster.html">Torso &amp; Smart Fabrics</a>
+              </li>
+            </ul>
+            <div class="footer-heading mt-4">Feedback</div>
+            <ul class="footer-links">
+              <li><a href="../feedBack/feedback.html">Haptic Reconditioning</a></li>
+              <li><a href="../feedBack/feedback.html">Gait &amp; Lower Limb</a></li>
+              <li>
+                <a href="../feedBack/feedback.html">Psychology of Ergonomics</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Engineering + Case Studies -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">Engineering</div>
+            <ul class="footer-links">
+              <li><a href="../engineering/engineering.html">Material Science</a></li>
+              <li>
+                <a href="../engineering/engineering.html">Power &amp; Heat Management</a>
+              </li>
+              <li><a href="../engineering/engineering.html">Anthropometrics</a></li>
+            </ul>
+            <div class="footer-heading mt-4">Case Studies</div>
+            <ul class="footer-links">
+              <li>
+                <a href="../casestudy/casestudies.html">Industrial / Exoskeletons</a>
+              </li>
+              <li><a href="../casestudy/casestudies.html">Athletic Performance</a></li>
+              <li>
+                <a href="../casestudy/casestudies.html">Medical / Rehabilitative</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Ethics + General -->
+          <div class="col-6 col-lg-2">
+            <div class="footer-heading">Ethics</div>
+            <ul class="footer-links">
+              <li><a href="../ethics/ethics.html">Neural Interfaces</a></li>
+              <li><a href="../ethics/ethics.html">Regulatory Landscape</a></li>
+              <li><a href="../ethics/ethics.html">Evolutionary Impact</a></li>
+            </ul>
+            <div class="footer-heading mt-4">General</div>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="../about/about.html">About / Contact</a></li>
+              <li><a href="../privacy.html">Privacy Policy</a></li>
+              <li><a href="../cookies.html">Cookies</a></li>
+              <li><a href="../terms.html">Terms</a></li>
+            </ul>
+          </div>
+
+          <!-- Meet the Team -->
+          <div class="col-lg-3">
+            <div class="footer-heading">Meet the Team</div>
+            <p
+              style="
+                font-size: 0.82rem;
+                opacity: 0.5;
+                margin-bottom: 1rem;
+                line-height: 1.6;
+              "
+            >
+              sensoria is a student project by
+              <strong style="color: var(--silver)">The Ergo Lab.</strong> —
+              Group 4, CIP 1101-CSAD.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 0.45rem">
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Team Leader:</span
+                >
+                Amir Lopez
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >Content Manager:</span
+                >
+                Gianna Ebue
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600"
+                  >UI Designer:</span
+                >
+                Mico Parungao
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600">Developers:</span>
+                Patricia Pelicano &amp; Aica Ortega
+              </div>
+              <div style="font-size: 0.8rem; color: rgba(221, 220, 242, 0.6)">
+                <span style="color: var(--vodka); font-weight: 600">Quality Assurance:</span>
+                Noel Bandoy &amp; Kim Datuin
+  
